@@ -1,5 +1,5 @@
 {% set name = "libint" %}
-{% set version = "2.4.2" %}
+{% set version = "2.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz
-  sha256: 253fa3301e6742f5aac9e96dbe2a5707fc73abd6f4a214a8d44f03e113e69f00
+  sha256: e6c1a1a30988cb97993451e9a6ef2cc14d02f77f070b8d097077d3996e5acffc
 
 build:
   number: 0
