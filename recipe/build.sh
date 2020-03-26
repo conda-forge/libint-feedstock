@@ -3,7 +3,7 @@
 set -x
 echo ${PREFIX}
 export CXXFLAGS="${CXXFLAGS} -fopenmp"
-./configure --prefix="${PREFIX}" --enable-shared; if [ $? -ne 0 ]; then cat config.log; fi
+./configure --prefix="${PREFIX}" --enable-shared
 
 make -j${CPU_COUNT}
 make -j${CPU_COUNT} check
