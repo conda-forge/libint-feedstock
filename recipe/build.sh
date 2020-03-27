@@ -6,5 +6,5 @@ export CXXFLAGS="${CXXFLAGS} -fopenmp"
 
 mkdir -p build
 cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_BUILD_TYPE:STRING=Release
+cmake .. -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_VERBOSE_MAKEFILE=ON
 cmake --build . --target install -- -j${CPU_COUNT}
