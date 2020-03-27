@@ -21,8 +21,6 @@ requirements:
     - boost-cpp
     - cmake
     - eigen
-    - gmp
-    - mpfr
     - openmp
       
 test:
