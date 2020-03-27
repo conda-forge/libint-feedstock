@@ -4,5 +4,7 @@ set -x
 echo ${PREFIX}
 export CXXFLAGS="${CXXFLAGS} -fopenmp"
 
-cmake -H. -Build -DCMAKE_INSTALL_PREFIX=${PREFIX}
-cmake --build build --target install -- -j${CPU_COUNT}
+mkdir -p build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_BUILD_TYPE:STRING=Release
+cmake --build . --target install -- -j${CPU_COUNT}
