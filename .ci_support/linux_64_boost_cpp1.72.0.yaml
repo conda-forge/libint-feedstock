@@ -1,5 +1,5 @@
 boost_cpp:
-- '1.72'
+- 1.72.0
 c_compiler:
 - gcc
 c_compiler_version:
@@ -17,3 +17,5 @@ docker_image:
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
+target_platform:
+- linux-64
