@@ -1,5 +1,5 @@
 {% set name = "libint" %}
-{% set version = "2.6.0" %}
+{% set version = "2.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz
-  sha256: e001ad5bf5bcb51a6355da25348cd449a7173c81e61fb58cd1ccfd5e492befa6
+  sha256: 24e7ce6bd4f074b182e2ff4f9c4d039cda07ed67e582447f79450753a3c24042
 
 build:
-  number: 3
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -22,7 +22,7 @@ requirements:
     - cmake
     - eigen
     - openmp
-      
+
 test:
   commands:
     # Verify library
@@ -32,14 +32,14 @@ test:
     - ldd -v "${PREFIX}/lib/libint2${SHLIB_EXT}"                 # [linux]
 
 about:
-    home: https://github.com/evaleev/libint
-    dev_url: https://github.com/evaleev/libint    
-    doc_url: https://github.com/evaleev/libint/wiki
-    license: LGPL-3.0+
-    license_url: https://opensource.org/licenses/LGPL-3.0+
-    license_file: LICENSE
-    license_family: LGPL
-    summary: "Libint is a high-performance library for computing Gaussian integrals in quantum mechanics"
+  home: https://github.com/evaleev/libint
+  dev_url: https://github.com/evaleev/libint
+  doc_url: https://github.com/evaleev/libint/wiki
+  license: LGPL-3.0+
+  license_url: https://opensource.org/licenses/LGPL-3.0+
+  license_file: LICENSE
+  license_family: LGPL
+  summary: Libint is a high-performance library for computing Gaussian integrals in quantum mechanics
 
 extra:
   recipe-maintainers:
