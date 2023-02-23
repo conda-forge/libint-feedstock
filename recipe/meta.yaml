@@ -35,7 +35,7 @@ build:
   number: 0
   binary_relocation: true
   run_exports:
-    - {{ pin_subpackage('libint2', max_pin='x') }}
+    - {{ pin_subpackage('libint', max_pin='x') }}
 
 requirements:
   build:
