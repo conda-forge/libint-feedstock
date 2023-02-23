@@ -3,11 +3,11 @@ About libint
 
 Home: https://github.com/evaleev/libint
 
-Package license: [LGPL-3.0+](https://opensource.org/licenses/LGPL-3.0+)
+Package license: [LGPL-3.0-only](https://opensource.org/license/lgpl-3-0/)
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libint-feedstock/blob/main/LICENSE.txt)
 
-Summary: Libint is a high-performance library for computing Gaussian integrals in quantum mechanics
+Summary: Libint is E. Valeev's library for the evaluation of molecular integrals of many-body operators over Gaussian functions
 
 Development: https://github.com/evaleev/libint
 
@@ -42,6 +42,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6216&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libint-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6216&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libint-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -174,4 +181,5 @@ Feedstock Maintainers
 =====================
 
 * [@felipeZ](https://github.com/felipeZ/)
+* [@loriab](https://github.com/loriab/)
 
