@@ -1,47 +1,116 @@
 {% set name = "libint" %}
-{% set version = "2.7.2" %}
+{% set version = "2.7.3dev1" %}
+{% set version_src = "2.7.2" %}
+
+# toy-sized source tarball for recipe testing
+{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.7.2-post1-2-2-3-2_1.tgz" %}
+{% set sha256_toy = "8eec23ee3148cd91dd817c5dc908e1e40e14d318d704d047ac5572dce860484e" %}
+
+# production source tarball: L/M build w/i 3h but W hangs
+{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.7.2-post1-5-4-3-6-5-4_mm4f12ob2_1.tgz" %}
+{% set sha256_bells = "2d3a27510578f409fb080574721923c6d5bd06b13583a12d6823326be88236df" %}
+
+# production source tarball: no Hessian ERIs but works for W
+{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.7.2-post1-5-4-6-5_mm4ob2_1.tgz" %}
+{% set sha256_basic = "6c4faffe144cbd41acd18a79a7157d97dfe10a95e01ce228e25a8666b4f5858a" %}
+
+# source tarball pattern for upstream
+# {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz
-  sha256: a7306f1998a4c0a0babc13d480c62de2631674918e3562c78fb602c77efe0b94
+  # url: {{ url_toy }}
+  url: {{ url_bells }}        # [unix]
+  url: {{ url_basic }}        # [win]
+  # sha256: {{ sha256_toy }}
+  sha256: {{ sha256_bells }}  # [unix]
+  sha256: {{ sha256_basic }}  # [win]
+  # note: source/url above is a tarball of generated library source code.
+  # * the upstream generator project is: https://github.com/evaleev/libint
+  # * tarballs from modified generator project at: https://github.com/evaleev/libint/pull/259
 
 build:
   number: 0
-  skip: true  # [win]
+  binary_relocation: true
+  run_exports:
+    - {{ pin_subpackage('libint', max_pin='x') }}
 
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
     - cmake
-    - make
+    - ninja
   host:
+    # note: alternately, could withhold boost here so that a vendored subset of boost headers gets installed
+    #   at include/libint2/boost/ . Then downstream builds against libint2 don't need a Boost dependency.
     - boost-cpp
     - eigen
-    - openmp
 
 test:
+  requires:
+    - {{ compiler('cxx') }}
+    - cmake
+    - ninja
+    - python 3.10  # only for running a validation script, so suppress all but one Py version. update as necessary.
+    - eigen
+    - boost-cpp
+  files:
+    - tests/hartree-fock/CMakeLists.txt
+  source_files:
+    - features
+    - tests/hartree-fock/h2o_rotated.xyz
+    - tests/hartree-fock/hartree-fock++.cc
+    - tests/hartree-fock/hartree-fock++-validate.py
   commands:
+    - ls -l $PREFIX/lib                                                  # [unix]
+    - ls -l $PREFIX/lib/cmake/libint2                                    # [unix]
+    - dir %PREFIX%\\Library                                              # [win]
+    - dir %PREFIX%\\Library\\include                                     # [win]
     # Verify library
-    - test -f "${PREFIX}/lib/libint2${SHLIB_EXT}"
+    - test -L $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
+    - test ! -f $PREFIX/lib/libint2.a                                    # [unix]
+    - if not exist %PREFIX%\\Library\\lib\\int2.lib exit 1               # [win]
+    - if exist %PREFIX%\\Library\\bin\\int2.dll exit 1                   # [win]
+    # Verify accessories
+    - test -f $PREFIX/include/libint2.h                                  # [unix]
+    - test -f $PREFIX/include/libint2/engine.h                           # [unix]
+    - test ! -f $PREFIX/include/libint2/boost/preprocessor.hpp           # [unix]
+    - test -f $PREFIX/share/libint/{{ version_src }}/basis/sto-6g.g94    # [unix]
+    - test -f $PREFIX/lib/cmake/libint2/libint2-config.cmake             # [unix]
+    - test -f $PREFIX/lib/pkgconfig/libint2.pc                           # [unix]
+    - if not exist %PREFIX%\\Library\\include\\libint2.h exit 1          # [win]
+    - if not exist %PREFIX%\\Library\\include\\libint2\\engine.h exit 1  # [win]
+    - if exist %PREFIX%\\Library\\include\\libint2\\boost\\preprocessor.hpp exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\share\\libint\\{{ version_src }}\\basis\\sto-6g.g94 exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\cmake\\libint2\\libint2-config.cmake exit 1  # [win]
+    - if exist %PREFIX%\\Library\\lib\\pkgconfig\\libint2.pc exit 1      # [win]
     # Inspect linkage
-    - ldd -r -u "${PREFIX}/lib/libint2${SHLIB_EXT}" && return 0  # [linux]
-    - ldd -v "${PREFIX}/lib/libint2${SHLIB_EXT}"                 # [linux]
+    - ldd -v $PREFIX/lib/libint2$SHLIB_EXT                               # [linux and build_platform == target_platform]
+    - otool -L $PREFIX/lib/libint2$SHLIB_EXT                             # [osx]
+    # Actually test
+    - cd tests/hartree-fock
+    - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="${PREFIX}"          # [unix]
+    - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_BUILD_TYPE=Release  # [win]
+    - cmake --build build
+    - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../features  # [unix]
+    - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\features  # [win]
 
 about:
   home: https://github.com/evaleev/libint
   dev_url: https://github.com/evaleev/libint
   doc_url: https://github.com/evaleev/libint/wiki
-  license: LGPL-3.0+
-  license_url: https://opensource.org/licenses/LGPL-3.0+
-  license_file: LICENSE
+  license: LGPL-3.0-only
+  license_url: https://opensource.org/license/lgpl-3-0/
+  license_file:
+    - LICENSE
+    - COPYING.LESSER
   license_family: LGPL
-  summary: Libint is a high-performance library for computing Gaussian integrals in quantum mechanics
+  summary: "Libint is E. Valeev's library for the evaluation of molecular integrals of many-body operators over Gaussian functions"
 
 extra:
   recipe-maintainers:
     - felipeZ
+    - loriab
