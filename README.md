@@ -1,11 +1,11 @@
-About libint
-============
+About libint-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libint-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/evaleev/libint
 
 Package license: [LGPL-3.0-only](https://opensource.org/license/lgpl-3-0/)
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libint-feedstock/blob/main/LICENSE.txt)
 
 Summary: Libint is E. Valeev's library for the evaluation of molecular integrals of many-body operators over Gaussian functions
 
