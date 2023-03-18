@@ -1,11 +1,11 @@
-About libint
-============
+About libint-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libint-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/evaleev/libint
 
 Package license: [LGPL-3.0-only](https://opensource.org/license/lgpl-3-0/)
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libint-feedstock/blob/main/LICENSE.txt)
 
 Summary: Libint is E. Valeev's library for the evaluation of molecular integrals of many-body operators over Gaussian functions
 
@@ -42,6 +42,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6216&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libint-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6216&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libint-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
