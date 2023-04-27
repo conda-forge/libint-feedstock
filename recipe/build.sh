@@ -2,7 +2,9 @@
 
 set -x
 echo ${PREFIX}
-#export CXXFLAGS="${CXXFLAGS} -fopenmp"
+if [[ "${target_platform}" != "osx-arm64" ]]; then
+  export CXXFLAGS="${CXXFLAGS} -fopenmp"
+fi
 
 mkdir -p build
 cd build
