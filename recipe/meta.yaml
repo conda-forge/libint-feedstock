@@ -22,7 +22,6 @@ requirements:
   host:
     - boost-cpp
     - eigen
-    - openmp
 
 test:
   commands:

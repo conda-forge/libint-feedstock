@@ -2,7 +2,7 @@
 
 set -x
 echo ${PREFIX}
-export CXXFLAGS="${CXXFLAGS} -fopenmp"
+#export CXXFLAGS="${CXXFLAGS} -fopenmp"
 
 mkdir -p build
 cd build
