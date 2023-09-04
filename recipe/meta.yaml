@@ -48,7 +48,7 @@ test:
   files:
     - tests/hartree-fock/CMakeLists.txt
   source_files:
-    - Makefile.features
+    - MakeVars.features
     - tests/hartree-fock/h2o_rotated.xyz
     - tests/hartree-fock/hartree-fock++.cc
     - tests/hartree-fock/hartree-fock++-validate.py
@@ -83,8 +83,8 @@ test:
     - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="${PREFIX}"          # [unix]
     - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_BUILD_TYPE=Release  # [win]
     - cmake --build build
-    - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../features  # [unix]
-    - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\features  # [win]
+    - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../MakeVars.features  # [unix]
+    - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\MakeVars.features  # [win]
 
 about:
   home: https://github.com/evaleev/libint
