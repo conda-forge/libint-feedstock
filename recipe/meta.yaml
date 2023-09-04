@@ -57,8 +57,11 @@ test:
     - ls -l $PREFIX/lib/cmake/libint2                                    # [unix]
     - dir %PREFIX%\\Library                                              # [win]
     - dir %PREFIX%\\Library\\include                                     # [win]
+    - dir %PREFIX%\\Library\\include\\libint2                            # [win]
+    - dir %PREFIX%\\Library\\lib                                         # [win]
+    - dir %PREFIX%\\Library\\bin                                         # [win]
     # Verify library
-    - test -L $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
+    - test -f $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
     - test ! -f $PREFIX/lib/libint2.a                                    # [unix]
     - if not exist %PREFIX%\\Library\\lib\\int2.lib exit 1               # [win]
     - if exist %PREFIX%\\Library\\bin\\int2.dll exit 1                   # [win]
