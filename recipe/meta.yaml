@@ -62,6 +62,7 @@ test:
     - dir %PREFIX%\\Library\\lib                                         # [win]
     - dir %PREFIX%\\Library\\bin                                         # [win]
     # Verify library
+    # - test -L $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
     - test -f $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
     - test ! -f $PREFIX/lib/libint2.a                                    # [unix]
     - if not exist %PREFIX%\\Library\\lib\\int2.lib exit 1               # [win]
@@ -76,6 +77,9 @@ test:
     - if not exist %PREFIX%\\Library\\include\\libint2.h exit 1          # [win]
     - if not exist %PREFIX%\\Library\\include\\libint2\\engine.h exit 1  # [win]
     - if exist %PREFIX%\\Library\\include\\libint2\\boost\\preprocessor.hpp exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\share\\libint\\{{ version_src }}\\basis\\sto-6g.g94 exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\cmake\\libint2\\libint2-config.cmake exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\pkgconfig\\libint2.pc exit 1  # [win]
     # Inspect linkage
     - ldd -v $PREFIX/lib/libint2$SHLIB_EXT                               # [linux and build_platform == target_platform]
     - otool -L $PREFIX/lib/libint2$SHLIB_EXT                             # [osx]
