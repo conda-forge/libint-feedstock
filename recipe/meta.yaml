@@ -7,8 +7,12 @@
 {% set sha256_toy = "aa203edd60cd4881dc43b5e3beb486cc5f9fb4f200d7faac1ee86b0222ab2bb2" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
-{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.0-dev1-5-4-3-6-5-4_0.tgz" %}
+{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.0-dev1-5-4-3-6-5-4_mm4f12ob2_0.tgz" %}
 {% set sha256_bells = "f973cafa1846ba23585fbc5a609cb378f868aad4922ac1091f91863fdec6b705" %}
+
+# production source tarball: no Hessian ERIs but works for W
+{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.0-dev1-5-4-6-5_mm4f12ob2_0.tgz" %}
+{% set sha256_basic = "1cd746b1242adb79111208de6333bcff55383387170bae72a7e734310ca38774" %}
 
 # source tarball pattern for upstream
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
@@ -19,9 +23,11 @@ package:
 
 source:
   # url: {{ url_toy }}
-  url: {{ url_bells }}
+  url: {{ url_bells }}        # [unix]
+  url: {{ url_basic }}        # [win]
   # sha256: {{ sha256_toy }}
-  sha256: {{ sha256_bells }}
+  sha256: {{ sha256_bells }}  # [unix]
+  sha256: {{ sha256_basic }}  # [win]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs from modified generator project at: https://github.com/evaleev/libint/pull/271 (eventually 259)
