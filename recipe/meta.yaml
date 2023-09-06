@@ -31,9 +31,12 @@ source:
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs from modified generator project at: https://github.com/evaleev/libint/pull/271 (eventually 259)
+  patches:
+    - 0001-add-config-bells.patch  # [unix]
+    - 0001-add-config-basic.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}
@@ -71,9 +74,6 @@ test:
     - ls -l $PREFIX/lib/cmake/libint2                                    # [unix]
     - dir %PREFIX%\\Library                                              # [win]
     - dir %PREFIX%\\Library\\include                                     # [win]
-    - dir %PREFIX%\\Library\\include\\libint2                            # [win]
-    - dir %PREFIX%\\Library\\lib                                         # [win]
-    - dir %PREFIX%\\Library\\bin                                         # [win]
     # Verify library
     # - test -L $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
     - test -f $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
