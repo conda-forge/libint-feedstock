@@ -26,4 +26,13 @@ ${BUILD_PREFIX}/bin/cmake ${CMAKE_ARGS} \
   -D BUILD_TESTING=ON \
   -D CMAKE_PREFIX_PATH="${PREFIX}"
 
+# use `--target check install` above to run ctest tests within build phase. adds about 10m.
+
 cmake --build build --target install
+
+# generation of the source tarball included the following settings (plus ints classes, AM, deriv)
+#  -D LIBINT2_SHGAUSS_ORDERING=standard
+#  -D LIBINT2_CARTGAUSS_ORDERING=standard
+#  -D LIBINT2_SHELL_SET=standard
+#  -D ERI3_PURE_SH=OFF
+#  -D ERI2_PURE_SH=OFF
