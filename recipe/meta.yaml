@@ -22,18 +22,15 @@ package:
   version: {{ version }}
 
 source:
-  url: {{ url_toy }}
-  #url: {{ url_bells }}        # [unix]
-  #url: {{ url_basic }}        # [win]
-  sha256: {{ sha256_toy }}
-  #sha256: {{ sha256_bells }}  # [unix]
-  #sha256: {{ sha256_basic }}  # [win]
+  # url: {{ url_toy }}
+  url: {{ url_bells }}        # [unix]
+  url: {{ url_basic }}        # [win]
+  # sha256: {{ sha256_toy }}
+  sha256: {{ sha256_bells }}  # [unix]
+  sha256: {{ sha256_basic }}  # [win]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs from modified generator project at: https://github.com/evaleev/libint/pull/271 (eventually 259)
-  #patches:
-  #  - 0001-add-config-bells.patch  # [unix]
-  #  - 0001-add-config-basic.patch  # [win]
 
 build:
   number: 0

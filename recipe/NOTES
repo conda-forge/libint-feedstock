@@ -1,7 +1,11 @@
 diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0001-add-config-bigam.patch
 
+# 2.8.0-dev1 is "labeling sss -> ss" from early Sept2023 269/270/271 sequence
+# 2.8.0-dev2 is "revised component names" "aacd" from mid Oct2023 271 seq. also mm4->mm10. config edited
+
 # c-f toy
 #   uploaded as libint-2.8.0-dev1-2-2-3-2_0.tgz
+#   uploaded as libint-2.8.0-dev2-2-2-3-2_0.tgz (configuration.cc edited)
 ./configure \
     --with-max-am=3,2 \
     --with-eri-max-am=2,2 \
@@ -14,6 +18,9 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 
 # c-f basic
 #   uploaded as libint-2.8.0-dev1-5-4-6-5_mm4f12ob2_0.tgz
+#       dev1 uses --with-multipole-max-order=4 \
+#   uploaded as libint-2.8.0-dev2-5-4-6-5_mm10f12ob2_0.tgz (configuration.cc edited)
+#       dev2 uses --with-multipole-max-order=10 \
 ./configure \
     --enable-eri=1 \
     --enable-eri3=1 \
@@ -21,7 +28,7 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
     --enable-1body=2 \
     --enable-g12=1 \
     --disable-1body-property-derivs \
-    --with-multipole-max-order=4 \
+    --with-multipole-max-order=10 \
     --with-g12-max-am=4 \
     --with-eri-max-am=5,4 \
     --with-eri3-max-am=6,5 \
@@ -30,6 +37,9 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 
 # c-f bells
 #   uploaded as libint-2.8.0-dev1-5-4-3-6-5-4_mm4f12ob2_0.tgz
+#       dev1 uses --with-multipole-max-order=4 \
+#   uploaded as libint-2.8.0-dev2-5-4-3-6-5-4_mm10f12ob2_0.tgz (configuration.cc edited)
+#       dev2 uses --with-multipole-max-order=10 \
 ./configure \
     --enable-eri=2 \
     --enable-eri3=2 \
@@ -37,7 +47,7 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
     --enable-1body=2 \
     --enable-g12=1 \
     --disable-1body-property-derivs \
-    --with-multipole-max-order=4 \
+    --with-multipole-max-order=10 \
     --with-g12-max-am=4 \
     --with-eri-max-am=5,4,3 \
     --with-eri3-max-am=6,5,4 \
