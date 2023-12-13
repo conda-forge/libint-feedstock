@@ -8,11 +8,11 @@
 
 # production source tarball: L/M build w/i 3h but W hangs
 {% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.0-5-4-3-6-5-4_mm10f12ob2_0.tgz" %}
-{% set sha256_bells = "d2da9a5bbd9c22b0e3df2a25b511722e4009af87e8e5aa7ba38686070b0b11b7" %}
+{% set sha256_bells = "8e39eb455d52166979f290b4dba5890c3b1276b78301d92bffea37e17f216250" %}
 
 # production source tarball: no Hessian ERIs but works for W
-{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.0-dev2-5-4-6-5_mm10f12ob2_0.tgz" %}
-{% set sha256_basic = "f8dba16c792999329ac53325ea633cdb805b80ff5db089dc1b397077ab95d606" %}
+{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.0-5-4-6-5_mm10f12ob2_0.tgz" %}
+{% set sha256_basic = "e18ad61a51eaba55aa2bd1fde8f55c269ac45f2af60a5bd515813c8117e9687c" %}
 
 # source tarball pattern for upstream
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
@@ -36,7 +36,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [win]
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}

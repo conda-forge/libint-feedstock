@@ -2,6 +2,9 @@
 
 set -x
 echo ${PREFIX}
+if [ "$(uname)" == "Linux" ]; then
+  export CMAKE_BUILD_PARALLEL_LEVEL=2
+fi
 if [[ "${target_platform}" != "osx-arm64" ]]; then
   export CXXFLAGS="${CXXFLAGS} -fopenmp"
 fi
