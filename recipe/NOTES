@@ -1,0 +1,79 @@
+diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0001-add-config-bigam.patch
+
+# 2.8.0-dev1 is "labeling sss -> ss" from early Sept2023 269/270/271 sequence
+# 2.8.0-dev2 is "revised component names" "aacd" from mid Oct2023 271 seq. also mm4->mm10. config edited
+# 2.8.0 is at v2.8.0 tag. it's had unity build enabled, an ncoords line added to hartree-fock++.cc test
+#   (both of which will appear in v2.8.1) and also had their eri_ffff_d0-like codes added to
+#   configuration.cc and the MAX_AM_ERI added to top-level CMakeLists.txt
+
+
+# c-f toy
+#   uploaded as libint-2.8.0-dev1-2-2-3-2_0.tgz
+#   uploaded as libint-2.8.0-dev2-2-2-3-2_0.tgz (configuration.cc edited)
+#   uploaded as libint-2.8.0-2-2-3-2_0.tgz (at v2.8.0 tag; doesn't have the unity & ncoords fixes)
+./configure \
+    --with-max-am=3,2 \
+    --with-eri-max-am=2,2 \
+    --with-eri3-max-am=3,2 \
+    --enable-eri=1 \
+    --enable-eri3=1 \
+    --enable-1body=1 \
+    --disable-1body-property-derivs \
+    --with-multipole-max-order=2
+
+# c-f basic
+#   uploaded as libint-2.8.0-dev1-5-4-6-5_mm4f12ob2_0.tgz
+#       dev1 uses --with-multipole-max-order=4 \
+#   uploaded as libint-2.8.0-dev2-5-4-6-5_mm10f12ob2_0.tgz (configuration.cc edited)
+#       dev2 uses --with-multipole-max-order=10 \
+#   uploaded as libint-2.8.0-5-4-6-5_mm10f12ob2_0.tgz (at v2.8.0 tag)
+./configure \
+    --enable-eri=1 \
+    --enable-eri3=1 \
+    --enable-eri2=1 \
+    --enable-1body=2 \
+    --enable-g12=1 \
+    --disable-1body-property-derivs \
+    --with-multipole-max-order=10 \
+    --with-g12-max-am=4 \
+    --with-eri-max-am=5,4 \
+    --with-eri3-max-am=6,5 \
+    --with-eri2-max-am=6,5 \
+    --with-max-am=6,5
+
+# c-f bells
+#   uploaded as libint-2.8.0-dev1-5-4-3-6-5-4_mm4f12ob2_0.tgz
+#       dev1 uses --with-multipole-max-order=4 \
+#   uploaded as libint-2.8.0-dev2-5-4-3-6-5-4_mm10f12ob2_0.tgz (configuration.cc edited)
+#       dev2 uses --with-multipole-max-order=10 \
+#   uploaded as libint-2.8.0-5-4-3-6-5-4_mm10f12ob2_0.tgz (at v2.8.0 tag)
+./configure \
+    --enable-eri=2 \
+    --enable-eri3=2 \
+    --enable-eri2=2 \
+    --enable-1body=2 \
+    --enable-g12=1 \
+    --disable-1body-property-derivs \
+    --with-multipole-max-order=10 \
+    --with-g12-max-am=4 \
+    --with-eri-max-am=5,4,3 \
+    --with-eri3-max-am=6,5,4 \
+    --with-eri2-max-am=6,5,4 \
+    --with-max-am=6,5,4
+
+# cmake bells
+    -D LIBINT2_SHGAUSS_ORDERING=standard \
+    -D ERI3_PURE_SH=OFF \
+    -D ERI2_PURE_SH=OFF \
+    -D ENABLE_ERI=2 \
+    -D ENABLE_ERI3=2 \
+    -D ENABLE_ERI2=2 \
+    -D ENABLE_ONEBODY=2 \
+    -D ENABLE_G12=1 \
+    -D DISABLE_ONEBODY_PROPERTY_DERIVS=ON \
+    -D MULTIPOLE_MAX_ORDER=4 \
+    -D WITH_G12_MAX_AM=4 \
+    -D WITH_ERI_MAX_AM="5;4;3" \
+    -D WITH_ERI3_MAX_AM="6;5;4" \
+    -D WITH_ERI2_MAX_AM="6;5;4" \
+    -D WITH_MAX_AM="6;5;4"
