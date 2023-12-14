@@ -2,10 +2,15 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 
 # 2.8.0-dev1 is "labeling sss -> ss" from early Sept2023 269/270/271 sequence
 # 2.8.0-dev2 is "revised component names" "aacd" from mid Oct2023 271 seq. also mm4->mm10. config edited
+# 2.8.0 is at v2.8.0 tag. it's had unity build enabled, an ncoords line added to hartree-fock++.cc test
+#   (both of which will appear in v2.8.1) and also had their eri_ffff_d0-like codes added to
+#   configuration.cc and the MAX_AM_ERI added to top-level CMakeLists.txt
+
 
 # c-f toy
 #   uploaded as libint-2.8.0-dev1-2-2-3-2_0.tgz
 #   uploaded as libint-2.8.0-dev2-2-2-3-2_0.tgz (configuration.cc edited)
+#   uploaded as libint-2.8.0-2-2-3-2_0.tgz (at v2.8.0 tag; doesn't have the unity & ncoords fixes)
 ./configure \
     --with-max-am=3,2 \
     --with-eri-max-am=2,2 \
@@ -21,6 +26,7 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 #       dev1 uses --with-multipole-max-order=4 \
 #   uploaded as libint-2.8.0-dev2-5-4-6-5_mm10f12ob2_0.tgz (configuration.cc edited)
 #       dev2 uses --with-multipole-max-order=10 \
+#   uploaded as libint-2.8.0-5-4-6-5_mm10f12ob2_0.tgz (at v2.8.0 tag)
 ./configure \
     --enable-eri=1 \
     --enable-eri3=1 \
@@ -40,6 +46,7 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 #       dev1 uses --with-multipole-max-order=4 \
 #   uploaded as libint-2.8.0-dev2-5-4-3-6-5-4_mm10f12ob2_0.tgz (configuration.cc edited)
 #       dev2 uses --with-multipole-max-order=10 \
+#   uploaded as libint-2.8.0-5-4-3-6-5-4_mm10f12ob2_0.tgz (at v2.8.0 tag)
 ./configure \
     --enable-eri=2 \
     --enable-eri3=2 \

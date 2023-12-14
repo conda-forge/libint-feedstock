@@ -12,7 +12,7 @@
 
 # production source tarball: no Hessian ERIs but works for W
 {% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.0-5-4-6-5_mm10f12ob2_0.tgz" %}
-{% set sha256_basic = "e18ad61a51eaba55aa2bd1fde8f55c269ac45f2af60a5bd515813c8117e9687c" %}
+{% set sha256_basic = "4f6cd9524f2c68dc25aadde130086db67fe8c2fce6d26e9be17744dc7e037776" %}
 
 # source tarball pattern for upstream
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
@@ -30,9 +30,8 @@ source:
   sha256: {{ sha256_basic }}  # [win]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
-  # * tarballs from modified generator project at: https://github.com/evaleev/libint/pull/271 (eventually 259)
-  # w/toy patches:
-  # w/toy  - 0001-turn-on-unity-build.patch
+  # * tarballs aren't upstream release artifacts but have been generated with
+  #   different configuration from upstream release tag. See NOTES file.
 
 build:
   number: 0

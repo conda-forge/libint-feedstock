@@ -3,6 +3,7 @@
 set -x
 echo ${PREFIX}
 if [ "$(uname)" == "Linux" ]; then
+  # the L build hung once at [2105/2333]. not verified, but throttling Ninja here to avert out-of-memory problems.
   export CMAKE_BUILD_PARALLEL_LEVEL=2
 fi
 if [[ "${target_platform}" != "osx-arm64" ]]; then
