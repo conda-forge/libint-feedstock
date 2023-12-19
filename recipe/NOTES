@@ -5,12 +5,15 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 # 2.8.0 is at v2.8.0 tag. it's had unity build enabled, an ncoords line added to hartree-fock++.cc test
 #   (both of which will appear in v2.8.1) and also had their eri_ffff_d0-like codes added to
 #   configuration.cc and the MAX_AM_ERI added to top-level CMakeLists.txt
+# 2.8.1 is at v2.8.1 tag. These have had their eri_ffff_d0-like codes added to configuration.cc and
+#   the MAX_AM_ERI added to top-level CMakeLists.txt
 
 
 # c-f toy
 #   uploaded as libint-2.8.0-dev1-2-2-3-2_0.tgz
 #   uploaded as libint-2.8.0-dev2-2-2-3-2_0.tgz (configuration.cc edited)
 #   uploaded as libint-2.8.0-2-2-3-2_0.tgz (at v2.8.0 tag; doesn't have the unity & ncoords fixes)
+#   uploaded as libint-2.8.1-2-2-3-2_0.tgz (at v2.8.1 tag)
 ./configure \
     --with-max-am=3,2 \
     --with-eri-max-am=2,2 \
