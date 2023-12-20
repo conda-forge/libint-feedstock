@@ -30,6 +30,7 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 #   uploaded as libint-2.8.0-dev2-5-4-6-5_mm10f12ob2_0.tgz (configuration.cc edited)
 #       dev2 uses --with-multipole-max-order=10 \
 #   uploaded as libint-2.8.0-5-4-6-5_mm10f12ob2_0.tgz (at v2.8.0 tag)
+#   uploaded as libint-2.8.1-5-4-6-5_mm10f12ob2_0.tgz (at v2.8.1 tag)
 ./configure \
     --enable-eri=1 \
     --enable-eri3=1 \
@@ -50,6 +51,7 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 #   uploaded as libint-2.8.0-dev2-5-4-3-6-5-4_mm10f12ob2_0.tgz (configuration.cc edited)
 #       dev2 uses --with-multipole-max-order=10 \
 #   uploaded as libint-2.8.0-5-4-3-6-5-4_mm10f12ob2_0.tgz (at v2.8.0 tag)
+#   uploaded as libint-2.8.1-5-4-3-6-5-4_mm10f12ob2_0.tgz (at v2.8.1 tag)
 ./configure \
     --enable-eri=2 \
     --enable-eri3=2 \
