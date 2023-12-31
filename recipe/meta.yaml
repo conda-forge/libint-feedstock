@@ -34,15 +34,23 @@ source:
   #   different configuration from upstream release tag. See NOTES file.
 
 build:
-  number: 0
+  number: 1
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}
+  ignore_run_exports_from:
+  # The next statement breaks the fortran compiler on arm64.
+  # Remove periodically to check, if this resolved itself.
+    - {{ compiler('fortran') }}  # [linux or (osx and not arm64)]
+  script_env:
+    - ENABLE_FORTRAN=ON  # [linux or (osx and not arm64)]
+    - ENABLE_FORTRAN=OFF  # [osx and arm64]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
+    - {{ compiler('fortran') }}  # [linux or (osx and not arm64)]
     - cmake
     - ninja
   host:
