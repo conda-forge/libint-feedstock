@@ -34,7 +34,7 @@ source:
   #   different configuration from upstream release tag. See NOTES file.
 
 build:
-  number: 1
+  number: 0
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}
