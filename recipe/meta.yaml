@@ -1,18 +1,18 @@
 {% set name = "libint" %}
-{% set version = "2.8.1" %}
-{% set version_src = "2.8.1" %}
+{% set version = "2.8.2" %}
+{% set version_src = "2.8.2" %}
 
 # toy-sized source tarball for recipe testing
-{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.1-2-2-3-2_0.tgz" %}
-{% set sha256_toy = "125bb9aa31e8362c74784cfbfb72362ee33847e4f4a2892439feee14f9f1b04e" %}
+{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.2-2-2-3-2_0.tgz" %}
+{% set sha256_toy = "ab8bd9a7c2d19093f63e39b3bcc414781f5e903e49ba5c4b79721b3d0730eb4c" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
-{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.1-5-4-3-6-5-4_mm10f12ob2_0.tgz" %}
-{% set sha256_bells = "9c07b8202efd66a5db6be7dc8b5ecf41a39eb73a751748f0a1f2d1eb5f883eb2" %}
+{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.2-5-4-3-6-5-4_mm10f12ob2_0.tgz" %}
+{% set sha256_bells = "ebecadcd18fddba9d88b074c59eab028f6151a42f822bc5d8756d063fcfd9ff7" %}
 
 # production source tarball: no Hessian ERIs but works for W
-{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.1-5-4-6-5_mm10f12ob2_0.tgz" %}
-{% set sha256_basic = "2a51eae74b4c5d1f665cc250cb399eaac2655d5a6c34851ab812bf315bad2be4" %}
+{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.2-5-4-6-5_mm10f12ob2_0.tgz" %}
+{% set sha256_basic = "5518f58913b99f7a7a6f13cbd4204afaac607291f3bbb47e830a90e47421a6d4" %}
 
 # source tarball pattern for upstream
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
@@ -34,7 +34,7 @@ source:
   #   different configuration from upstream release tag. See NOTES file.
 
 build:
-  number: 1
+  number: 0
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}
