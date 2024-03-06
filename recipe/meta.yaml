@@ -3,20 +3,16 @@
 {% set version_src = "2.9.0" %}
 
 # toy-sized source tarball for recipe testing
-{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.2-2-2-3-2_0.tgz" %}
-{% set sha256_toy = "ab8bd9a7c2d19093f63e39b3bcc414781f5e903e49ba5c4b79721b3d0730eb4c" %}
+{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-2-2-3-2_0.tgz" %}
+{% set sha256_toy = "280744ec50d57e36c1147b87aa5dab42ae088cd16e6a07cbe0020f48597b24cb" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
-#{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.2-5-4-3-6-5-4_mm10f12ob2_0.tgz" %}
-#{% set sha256_bells = "ebecadcd18fddba9d88b074c59eab028f6151a42f822bc5d8756d063fcfd9ff7" %}
-#{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.2-6-5-3-7-7-4_mm10f12ob2_3.tgz" %}
-#{% set sha256_bells = "03b4b5f85163f34891b29796b5c8e2dba762842214d99dea39c7ff9e4f21e05d" %}
-{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-7-6-3-7-7-4_mm10f12ob2_0.tgz" %}
-{% set sha256_bells = "9575aadb7bc4e553a1f3bee1c92e2bc08889aec997de47a8db359ce730b0db3e" %}
+{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-6-6-3-7-7-4_mm10f12ob2_0.tgz" %}
+{% set sha256_bells = "39a409afe28c43847a727200056035af56e1c02dcee97ff5ed5275395d6ed3cc" %}
 
 # production source tarball: no Hessian ERIs but works for W
-{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.8.2-5-4-6-5_mm10f12ob2_0.tgz" %}
-{% set sha256_basic = "5518f58913b99f7a7a6f13cbd4204afaac607291f3bbb47e830a90e47421a6d4" %}
+{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-6-6-7-7_mm10f12ob2_0.tgz" %}
+{% set sha256_basic = "9f3061886e7ace9bad253d8a8a2098cb77ea2d8a63a518f3dfe4dd994633a37c" %}
 
 # source tarball pattern for upstream
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
@@ -26,19 +22,19 @@ package:
   version: {{ version }}
 
 source:
-  # url: {{ url_toy }}
-  url: {{ url_bells }}        # [unix]
-  url: {{ url_basic }}        # [win]
-  # sha256: {{ sha256_toy }}
-  sha256: {{ sha256_bells }}  # [unix]
-  sha256: {{ sha256_basic }}  # [win]
+  url: {{ url_toy }}
+  #url: {{ url_bells }}        # [unix]
+  #url: {{ url_basic }}        # [win]
+  sha256: {{ sha256_toy }}
+  #sha256: {{ sha256_bells }}  # [unix]
+  #sha256: {{ sha256_basic }}  # [win]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs aren't upstream release artifacts but have been generated with
   #   different configuration from upstream release tag. See NOTES file.
 
 build:
-  number: 1
+  number: 0
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}
