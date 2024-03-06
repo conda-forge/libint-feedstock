@@ -31,6 +31,12 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 #       dev2 uses --with-multipole-max-order=10 \
 #   uploaded as libint-2.8.0-5-4-6-5_mm10f12ob2_0.tgz (at v2.8.0 tag)
 #   uploaded as libint-2.8.1-5-4-6-5_mm10f12ob2_0.tgz (at v2.8.1 tag)
+#   uploaded as libint-2.8.2-5-4-6-5_mm10f12ob2_0.tgz (at v2.8.2 tag)
+#       v2.8.x    --with-eri-max-am=5,4 \
+#       v2.8.x    --with-eri3-max-am=6,5 \
+#       v2.8.x    --with-eri2-max-am=6,5 \
+#       v2.8.x    --with-max-am=6,5
+#   uploaded as libint-2.9.0-6-6-7-7_mm10f12ob2_0.tgz (at v2.9.0 tag)
 ./configure \
     --enable-eri=1 \
     --enable-eri3=1 \
@@ -40,10 +46,10 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
     --disable-1body-property-derivs \
     --with-multipole-max-order=10 \
     --with-g12-max-am=4 \
-    --with-eri-max-am=5,4 \
-    --with-eri3-max-am=6,5 \
-    --with-eri2-max-am=6,5 \
-    --with-max-am=6,5
+    --with-eri-max-am=6,6 \
+    --with-eri3-max-am=7,7 \
+    --with-eri2-max-am=7,7 \
+    --with-max-am=6,6
 
 # c-f bells
 #   uploaded as libint-2.8.0-dev1-5-4-3-6-5-4_mm4f12ob2_0.tgz
@@ -52,6 +58,12 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 #       dev2 uses --with-multipole-max-order=10 \
 #   uploaded as libint-2.8.0-5-4-3-6-5-4_mm10f12ob2_0.tgz (at v2.8.0 tag)
 #   uploaded as libint-2.8.1-5-4-3-6-5-4_mm10f12ob2_0.tgz (at v2.8.1 tag)
+#   uploaded as libint-2.8.2-5-4-3-6-5-4_mm10f12ob2_0.tgz (at v2.8.2 tag)
+#       v2.8.x    --with-eri-max-am=5,4,3 \
+#       v2.8.x    --with-eri3-max-am=6,5,4 \
+#       v2.8.x    --with-eri2-max-am=6,5,4 \
+#       v2.8.x    --with-max-am=6,5,4
+#   uploaded as libint-2.9.0-6-6-3-7-7-4_mm10f12ob2_0.tgz (at v2.9.0 tag)
 ./configure \
     --enable-eri=2 \
     --enable-eri3=2 \
@@ -61,10 +73,10 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
     --disable-1body-property-derivs \
     --with-multipole-max-order=10 \
     --with-g12-max-am=4 \
-    --with-eri-max-am=5,4,3 \
-    --with-eri3-max-am=6,5,4 \
-    --with-eri2-max-am=6,5,4 \
-    --with-max-am=6,5,4
+    --with-eri-max-am=6,6,3 \
+    --with-eri3-max-am=7,7,4 \
+    --with-eri2-max-am=7,7,4 \
+    --with-max-am=6,6,3
 
 # cmake bells
     -D LIBINT2_SHGAUSS_ORDERING=standard \

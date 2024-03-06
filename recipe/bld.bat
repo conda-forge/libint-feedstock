@@ -28,6 +28,7 @@ if errorlevel 1 exit 1
 :: use `--target check install` above to run ctest tests within build phase. adds about 10m. also have to BUILD_TESTING=ON
 
 cd build
+set CMAKE_BUILD_PARALLEL_LEVEL=1
 cmake --build . ^
       --config Release ^
       --target install
