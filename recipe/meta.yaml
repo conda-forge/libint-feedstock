@@ -45,7 +45,6 @@ build:
   script_env:
     - ENABLE_FORTRAN=ON  # [linux or (osx and not arm64)]
     - ENABLE_FORTRAN=OFF  # [osx and arm64]
-  skip: true  # [not win]
 
 requirements:
   build:
