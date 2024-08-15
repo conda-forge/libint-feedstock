@@ -59,7 +59,7 @@ requirements:
     #   at include/libint2/boost/ . Then downstream builds against libint2 don't need a Boost dependency.
     - libboost-headers
     - eigen
-    - openmp  # [linux or (osx and not arm64)]
+    - openmp  # [(linux and not (aarch64 or ppc64le)) or (osx and not arm64)]
 
 test:
   requires:
