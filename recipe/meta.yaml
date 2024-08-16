@@ -57,6 +57,7 @@ requirements:
   host:
     # note: alternately, could withhold boost here so that a vendored subset of boost headers gets installed
     #   at include/libint2/boost/ . Then downstream builds against libint2 don't need a Boost dependency.
+    # * OpenMP not present in L2 afaik, but included for continuity with earlier builds
     - libboost-headers
     - eigen
     - openmp  # [(linux and not (aarch64 or ppc64le)) or (osx and not arm64)]
