@@ -23,15 +23,16 @@ package:
 
 source:
   # url: {{ url_toy }}
-  url: {{ url_bells }}        # [unix]
-  url: {{ url_basic }}        # [win]
+  url: {{ url_bells }}        # [unix and not aarch64]
+  url: {{ url_basic }}        # [win or aarch64]
   # sha256: {{ sha256_toy }}
-  sha256: {{ sha256_bells }}  # [unix]
-  sha256: {{ sha256_basic }}  # [win]
+  sha256: {{ sha256_bells }}  # [unix and not aarch64]
+  sha256: {{ sha256_basic }}  # [win or aarch64]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs aren't upstream release artifacts but have been generated with
   #   different configuration from upstream release tag. See NOTES file.
+  # * W times out and linux-aarch64 abandons at ~5h, so these use smaller src
 
 build:
   number: 1
