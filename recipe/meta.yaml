@@ -34,7 +34,7 @@ source:
   #   different configuration from upstream release tag. See NOTES file.
 
 build:
-  number: 0
+  number: 1
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}
@@ -50,6 +50,7 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}  # [linux or (osx and not arm64)]
     - cmake
     - ninja
