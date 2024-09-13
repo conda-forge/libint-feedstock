@@ -52,6 +52,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}  # [linux or (osx and not arm64)]
     - cmake
     - ninja
