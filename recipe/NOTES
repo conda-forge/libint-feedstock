@@ -94,3 +94,20 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
     -D WITH_ERI3_MAX_AM="6;5;4" \
     -D WITH_ERI2_MAX_AM="6;5;4" \
     -D WITH_MAX_AM="6;5;4"
+
+# c-f little bells (for aarch64)
+#   uploaded as libint-2.9.0-5-5-3-6-6-4_mm10f12ob2_0.tgz (at v2.9.0 tag; patched)
+./configure \
+    --enable-eri=2 \
+    --enable-eri3=2 \
+    --enable-eri2=2 \
+    --enable-1body=2 \
+    --enable-g12=1 \
+    --disable-1body-property-derivs \
+    --with-multipole-max-order=10 \
+    --with-g12-max-am=4 \
+    --with-eri-max-am=5,5,3 \
+    --with-eri3-max-am=6,6,4 \
+    --with-eri2-max-am=6,6,4 \
+    --with-max-am=5,5,3
+
