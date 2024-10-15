@@ -40,7 +40,7 @@ source:
   # * W times out and linux-aarch64 abandons at ~5h, so these use smaller src
 
 build:
-  number: 2
+  number: 3
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}
