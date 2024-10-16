@@ -47,18 +47,16 @@ build:
   ignore_run_exports_from:
   # The next statement breaks the fortran compiler on arm64.
   # Remove periodically to check, if this resolved itself.
-    - {{ compiler('fortran') }}  # [linux or (osx and not arm64)]
+    - {{ compiler('fortran') }}
   script_env:
-    - ENABLE_FORTRAN=ON  # [linux or (osx and not arm64)]
-    - ENABLE_FORTRAN=OFF  # [osx and arm64]
+    - ENABLE_FORTRAN=ON
 
 requirements:
   build:
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('fortran') }}  # [linux or (osx and not arm64)]
+    - {{ compiler('fortran') }}
     - cmake
     - ninja
   host:
