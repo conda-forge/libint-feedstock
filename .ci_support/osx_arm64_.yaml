@@ -20,6 +20,10 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '17'
+fortran_compiler:
+- gfortran
+fortran_compiler_version:
+- '13'
 libboost_headers:
 - '1.86'
 macos_machine:
@@ -29,3 +33,4 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+  - fortran_compiler_version
