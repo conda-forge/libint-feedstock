@@ -44,8 +44,6 @@ build:
   binary_relocation: true
   run_exports:
     - {{ pin_subpackage('libint', max_pin='x') }}
-  ignore_run_exports_from:
-    - {{ compiler("fortran") }}
   script_env:
     - ENABLE_FORTRAN=ON
 
