@@ -63,7 +63,7 @@ requirements:
     # * OpenMP not present in L2 afaik, but included for continuity with earlier builds
     - libboost-headers
     - eigen
-    - openmp  # [(linux and not (aarch64 or ppc64le)) or (osx and not arm64)]
+    - llvm-openmp  # [unix]
 
 test:
   requires:
