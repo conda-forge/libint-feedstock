@@ -26,13 +26,13 @@ package:
 
 source:
   # url: {{ url_toy }}
-  url: {{ url_bells }}        # [unix and not aarch64]
+  url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
   url: {{ url_basic }}        # [win]
-  url: {{ url_littlebells }}  # [aarch64]
+  url: {{ url_littlebells }}  # [aarch64 or ppc64le]
   # sha256: {{ sha256_toy }}
-  sha256: {{ sha256_bells }}  # [unix and not aarch64]
+  sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
   sha256: {{ sha256_basic }}  # [win]
-  sha256: {{ sha256_littlebells }}  # [aarch64]
+  sha256: {{ sha256_littlebells }}  # [aarch64 or ppc64le]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs aren't upstream release artifacts but have been generated with
