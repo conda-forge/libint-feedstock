@@ -54,10 +54,16 @@ requirements:
     - {{ compiler("fortran") }}
     - cmake
     - ninja
+  host:
+    - libboost-headers
+    - eigen
 
 outputs:
   - name: libint-c
     build:
+#      ignore_run_exports_from:
+#        # `libxc` is C only. So ignore cxx-only run-exports
+#        - {{ compiler("cxx") }}      # [cuda_compiler_version != "None"]
       run_exports:
         - {{ pin_subpackage('libint-c', max_pin='x') }}
     requirements:
@@ -139,6 +145,10 @@ outputs:
 
   - name: libint-f
     build:
+#      skip: true  # [win]
+#      ignore_run_exports_from:
+#        # `libxc` is C only. So ignore cxx-only run-exports
+#        - {{ compiler("cxx") }}      # [cuda_compiler_version != "None"]
       run_exports:
           # note pinning to -c since that's where the library is
         - {{ pin_subpackage('libint-c', max_pin='x') }}
@@ -146,6 +156,7 @@ outputs:
       build:
         - {{ stdlib('c') }}
         - {{ compiler('c') }}
+#        - {{ compiler('cxx') }}      # [cuda_compiler_version != "None"]
         - {{ compiler("fortran") }}
       host:
         - {{ pin_subpackage('libint-c', exact=True) }}
