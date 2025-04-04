@@ -56,13 +56,11 @@ requirements:
   host:
     - libboost-headers
     - eigen
+    - llvm-openmp                         # [unix]
 
 outputs:
   - name: libint-c
     build:
-      ignore_run_exports_from:
-        # `libint` is C/C++ only. So ignore fortran run-exports
-        - {{ compiler("fortran") }}
       run_exports:
         - {{ pin_subpackage('libint-c', max_pin='x') }}
     requirements:
@@ -92,7 +90,7 @@ outputs:
       - Library/share/libint              # [win]
     test:
       requires:
-        - {{ compiler('cxx') }}
+        - {{ compiler("cxx") }}
         - cmake
         - ninja
         - python 3.10  # only for running a validation script, so suppress all but one Py version. update as necessary.
@@ -144,12 +142,12 @@ outputs:
   - name: libint-f
     build:
       run_exports:
-          # note pinning to -c since that's where the library is
-        - {{ pin_subpackage('libint-c', max_pin='x') }}
+          # runtime needs libint-c, not libint-f, but I think this is now to get *exact* libint-c
+        - {{ pin_subpackage('libint-f', max_pin='x') }}
     requirements:
       build:
-        - {{ stdlib('c') }}
-        - {{ compiler('c') }}
+        - {{ stdlib("c") }}
+        - {{ compiler("c") }}
         - {{ compiler("fortran") }}
       host:
         - {{ pin_subpackage('libint-c', exact=True) }}
