@@ -44,7 +44,6 @@ build:
   binary_relocation: true
   script_env:
     - ENABLE_FORTRAN=ON
-  skip: true  # [not linux-64]
 
 requirements:
   build:
@@ -61,9 +60,9 @@ requirements:
 outputs:
   - name: libint-c
     build:
-#      ignore_run_exports_from:
-#        # `libxc` is C only. So ignore cxx-only run-exports
-#        - {{ compiler("cxx") }}      # [cuda_compiler_version != "None"]
+      ignore_run_exports_from:
+        # `libint` is C/C++ only. So ignore fortran run-exports
+        - {{ compiler("fortran") }}
       run_exports:
         - {{ pin_subpackage('libint-c', max_pin='x') }}
     requirements:
@@ -112,7 +111,6 @@ outputs:
         - dir %PREFIX%\\Library                                              # [win]
         - dir %PREFIX%\\Library\\include                                     # [win]
         # Verify library
-          # - test -L $PREFIX/lib/libint2$SHLIB_EXT                          # [unix]
         - test -f $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
         - test ! -f $PREFIX/lib/libint2.a                                    # [unix]
         - if not exist %PREFIX%\\Library\\lib\\int2.lib exit 1               # [win]
@@ -145,10 +143,6 @@ outputs:
 
   - name: libint-f
     build:
-#      skip: true  # [win]
-#      ignore_run_exports_from:
-#        # `libxc` is C only. So ignore cxx-only run-exports
-#        - {{ compiler("cxx") }}      # [cuda_compiler_version != "None"]
       run_exports:
           # note pinning to -c since that's where the library is
         - {{ pin_subpackage('libint-c', max_pin='x') }}
@@ -156,7 +150,6 @@ outputs:
       build:
         - {{ stdlib('c') }}
         - {{ compiler('c') }}
-#        - {{ compiler('cxx') }}      # [cuda_compiler_version != "None"]
         - {{ compiler("fortran") }}
       host:
         - {{ pin_subpackage('libint-c', exact=True) }}
