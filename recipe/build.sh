@@ -6,9 +6,6 @@ if [ "$(uname)" == "Linux" ]; then
   # the L build hung once at [2105/2333]. not verified, but throttling Ninja here to avert out-of-memory problems.
   export CMAKE_BUILD_PARALLEL_LEVEL=2
 fi
-if [[ "${target_platform}" != "osx-arm64" ]]; then
-  export CXXFLAGS="${CXXFLAGS} -fopenmp"
-fi
 
 ${BUILD_PREFIX}/bin/cmake ${CMAKE_ARGS} \
   -S ${SRC_DIR} \
@@ -18,7 +15,7 @@ ${BUILD_PREFIX}/bin/cmake ${CMAKE_ARGS} \
   -D CMAKE_BUILD_TYPE:STRING=Release \
   -D CMAKE_VERBOSE_MAKEFILE=ON \
   -D CMAKE_CXX_COMPILER=${CXX} \
-  -D CMAKE_CXX_FLAGS="${CXXFLAGS}" \
+  -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fopenmp" \
   -D CMAKE_INSTALL_LIBDIR=lib \
   -D BUILD_SHARED_LIBS=ON \
   -D Eigen3_ROOT=${PREFIX} \
