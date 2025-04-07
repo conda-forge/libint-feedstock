@@ -68,6 +68,8 @@ outputs:
         - {{ stdlib("c") }}
         - {{ compiler("c") }}
         - {{ compiler("cxx") }}
+        - {{ compiler("fortran") }}
+        # TODO above shouldn't be needed idk why it suddenly is
         - cmake
         - ninja
       host:
