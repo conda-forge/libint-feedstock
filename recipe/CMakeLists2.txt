@@ -532,8 +532,8 @@ if (ENABLE_FORTRAN)
 
     # translated Libint_t
     add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/fortran/libint2_types_f.h
-            COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/fortran/c_to_f.py ${CMAKE_BINARY_DIR}/fortran/libint2.h.i ${CMAKE_BINARY_DIR}/fortran/libint2_types_f.h Libint_t
-            DEPENDS ${CMAKE_BINARY_DIR}/fortran/libint2.h.i
+            COMMAND ${Python_EXECUTABLE} "${PROJECT_SOURCE_DIR}/fortran/c_to_f.py" "${CMAKE_BINARY_DIR}/fortran/libint2.h.i" "${CMAKE_BINARY_DIR}/fortran/libint2_types_f.h" Libint_t
+            DEPENDS "${CMAKE_BINARY_DIR}/fortran/libint2.h.i"
             COMMENT "Generating libint2_types_f.h"
             )
 
