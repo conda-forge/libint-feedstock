@@ -85,8 +85,8 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libint--c-green.svg)](https://anaconda.org/conda-forge/libint-c) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint-c.svg)](https://anaconda.org/conda-forge/libint-c) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint-c.svg)](https://anaconda.org/conda-forge/libint-c) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint-c.svg)](https://anaconda.org/conda-forge/libint-c) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libint--f-green.svg)](https://anaconda.org/conda-forge/libint-f) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint-f.svg)](https://anaconda.org/conda-forge/libint-f) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint-f.svg)](https://anaconda.org/conda-forge/libint-f) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint-f.svg)](https://anaconda.org/conda-forge/libint-f) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libint-green.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libint--fortran-green.svg)](https://anaconda.org/conda-forge/libint-fortran) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint-fortran.svg)](https://anaconda.org/conda-forge/libint-fortran) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint-fortran.svg)](https://anaconda.org/conda-forge/libint-fortran) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint-fortran.svg)](https://anaconda.org/conda-forge/libint-fortran) |
 
 Installing libint
 =================
@@ -98,41 +98,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libint-c, libint-f` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libint, libint-fortran` can be installed with `conda`:
 
 ```
-conda install libint-c libint-f
-```
-
-or with `mamba`:
-
-```
-mamba install libint-c libint-f
-```
-
-It is possible to list all of the versions of `libint-c` available on your platform with `conda`:
-
-```
-conda search libint-c --channel conda-forge
+conda install libint libint-fortran
 ```
 
 or with `mamba`:
 
 ```
-mamba search libint-c --channel conda-forge
+mamba install libint libint-fortran
+```
+
+It is possible to list all of the versions of `libint` available on your platform with `conda`:
+
+```
+conda search libint --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search libint --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search libint-c --channel conda-forge
+mamba repoquery search libint --channel conda-forge
 
-# List packages depending on `libint-c`:
-mamba repoquery whoneeds libint-c --channel conda-forge
+# List packages depending on `libint`:
+mamba repoquery whoneeds libint --channel conda-forge
 
-# List dependencies of `libint-c`:
-mamba repoquery depends libint-c --channel conda-forge
+# List dependencies of `libint`:
+mamba repoquery depends libint --channel conda-forge
 ```
 
 
