@@ -1,6 +1,6 @@
 @ECHO ON
 
-copy /y "CMakeLists2.txt" "CMakeLists.txt"
+copy /y "%RECIPE_DIR%\CMakeLists2.txt" "CMakeLists.txt"
 
 cmake %CMAKE_ARGS% ^
       -G "Ninja" ^
