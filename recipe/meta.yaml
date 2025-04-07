@@ -59,10 +59,10 @@ requirements:
     - llvm-openmp                         # [unix]
 
 outputs:
-  - name: libint-c
+  - name: libint
     build:
       run_exports:
-        - {{ pin_subpackage('libint-c', max_pin='x') }}
+        - {{ pin_subpackage('libint', max_pin='x') }}
     requirements:
       build:
         - {{ stdlib("c") }}
@@ -139,20 +139,20 @@ outputs:
         - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../MakeVars.features  # [unix]
         - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\MakeVars.features  # [win]
 
-  - name: libint-f
+  - name: libint-fortran
     build:
       run_exports:
-          # runtime needs libint-c, not libint-f, but I think this is now to get *exact* libint-c
-        - {{ pin_subpackage('libint-f', max_pin='x') }}
+          # runtime needs libint, not libint-fortran, but I think this is now to get *exact* libint
+        - {{ pin_subpackage('libint-fortran', max_pin='x') }}
     requirements:
       build:
         - {{ stdlib("c") }}
         - {{ compiler("c") }}
         - {{ compiler("fortran") }}
       host:
-        - {{ pin_subpackage('libint-c', exact=True) }}
+        - {{ pin_subpackage('libint', exact=True) }}
       run:
-        - {{ pin_subpackage('libint-c', exact=True) }}
+        - {{ pin_subpackage('libint', exact=True) }}
     files:
       - include/*.mod                                                        # [unix]
       - Library/include/*mod                                                 # [win]

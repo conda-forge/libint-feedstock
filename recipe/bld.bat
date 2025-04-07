@@ -1,5 +1,7 @@
 @ECHO ON
 
+copy /y "CMakeLists2.txt" "CMakeLists.txt"
+
 cmake %CMAKE_ARGS% ^
       -G "Ninja" ^
       -S %SRC_DIR% ^
