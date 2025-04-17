@@ -86,6 +86,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libint-green.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libint--fortran--devel-green.svg)](https://anaconda.org/conda-forge/libint-fortran-devel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint-fortran-devel.svg)](https://anaconda.org/conda-forge/libint-fortran-devel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint-fortran-devel.svg)](https://anaconda.org/conda-forge/libint-fortran-devel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint-fortran-devel.svg)](https://anaconda.org/conda-forge/libint-fortran-devel) |
 
 Installing libint
 =================
@@ -97,16 +98,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libint` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libint, libint-fortran-devel` can be installed with `conda`:
 
 ```
-conda install libint
+conda install libint libint-fortran-devel
 ```
 
 or with `mamba`:
 
 ```
-mamba install libint
+mamba install libint libint-fortran-devel
 ```
 
 It is possible to list all of the versions of `libint` available on your platform with `conda`:
