@@ -63,9 +63,9 @@ build:
 
 outputs:
   - name: libint
+    script: build-cxx.sh                  # [unix]
+    script: bld-cxx.bat                   # [win]
     build:
-      script: build-cxx.sh                # [unix]
-      script: bld-cxx.bat                 # [win]
       run_exports:
         - {{ pin_subpackage('libint', max_pin='x') }}
       ignore_run_exports_from:
