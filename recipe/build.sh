@@ -2,7 +2,7 @@
 
 set -x
 echo ${PREFIX}
-if [[ "$target_platform" == "linux-*" ]]; then
+if [[ "${target_platform}" == linux-* ]]; then
   # the L build hung once at [2105/2333]. not verified, but throttling Ninja here to avert out-of-memory problems.
   export CMAKE_BUILD_PARALLEL_LEVEL=2
 fi

@@ -50,7 +50,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - {{ compiler("fortran") }}  # [not win]
+    - {{ compiler("fortran") }}  # [unix]
     - cmake
     - ninja
   host:
