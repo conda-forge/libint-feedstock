@@ -72,8 +72,6 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('libint', max_pin='x') }}
-      ignore_run_exports_from:
-        - {{ compiler('fortran') }}
     requirements:
       build:
         - {{ stdlib("c") }}
@@ -146,6 +144,7 @@ outputs:
         - otool -L $PREFIX/lib/libint2$SHLIB_EXT                             # [osx]
         # Actually test
         - cd tests/hartree-fock
+        - set "LDFLAGS=%LDFLAGS:/link =%"                                    # [win]
         - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="${PREFIX}"          # [unix]
         - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_BUILD_TYPE=Release  # [win]
         - cmake --build build
@@ -156,7 +155,7 @@ outputs:
     script: build-cxx.sh                  # [unix]
     script: bld-cxx.bat                   # [win]
     build:
-      skip: true                                                             # [win]
+      skip: true                          # [win]
       run_exports:
           # runtime needs libint, not libint-fortran-devel, but I think this is now to get *exact* libint
         - {{ pin_subpackage('libint-fortran-devel', max_pin='x') }}
@@ -165,6 +164,8 @@ outputs:
         - {{ stdlib("c") }}
         - {{ compiler("c") }}
         - {{ compiler("fortran") }}
+        - cmake
+        - ninja
       host:
         - {{ pin_subpackage('libint', exact=True) }}
       run:
