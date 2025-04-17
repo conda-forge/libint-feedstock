@@ -10,7 +10,7 @@ fi
 #  :
 #fi
 
-${BUILD_PREFIX}/bin/cmake ${CMAKE_ARGS} \
+cmake ${CMAKE_ARGS} \
   -S ${SRC_DIR} \
   -B build \
   -G Ninja \
