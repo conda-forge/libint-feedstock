@@ -21,8 +21,12 @@
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name|lower }}-split
   version: {{ version }}
+
+# NOTE TO ANYONE ITERATING BUILD CHANGES: This recipe takes the full 6h.
+#   But if you toggle the url and sha for all arch to url_toy and sha256_toy, it'll
+#   take <30m and all recipe tests will still pass. This is highly recommended for sanity.
 
 source:
   url: {{ url_toy }}
@@ -193,6 +197,7 @@ about:
   summary: "Libint is E. Valeev's library for the evaluation of molecular integrals of many-body operators over Gaussian functions"
 
 extra:
+  feedstock-name: libint
   recipe-maintainers:
     - felipeZ
     - loriab
