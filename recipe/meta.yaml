@@ -149,6 +149,8 @@ outputs:
         - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\MakeVars.features  # [win]
 
   - name: libint-fortran-devel
+    script: build-cxx.sh                  # [unix]
+    script: bld-cxx.bat                   # [win]
     build:
       skip: true                                                             # [win]
       run_exports:
