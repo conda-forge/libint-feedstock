@@ -7,7 +7,7 @@ if [[ "${target_platform}" == linux-* ]]; then
   export CMAKE_BUILD_PARALLEL_LEVEL=2
 fi
 if [[ "${target_platform}" != "osx-arm64" ]]; then
-  # empty
+  :
 fi
 
 ${BUILD_PREFIX}/bin/cmake ${CMAKE_ARGS} \
