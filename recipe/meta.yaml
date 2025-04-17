@@ -41,13 +41,6 @@ source:
 
 build:
   number: 3
-  binary_relocation: true
-  run_exports:
-    - {{ pin_subpackage('libint', max_pin='x') }}
-  ignore_run_exports_from:
-  # The next statement breaks the fortran compiler on arm64.
-  # Remove periodically to check, if this resolved itself.
-    - {{ compiler('fortran') }}  # [linux or (osx and not arm64)]
   script_env:
     - ENABLE_FORTRAN=ON       # [unix]
     - ENABLE_FORTRAN=OFF      # [win]
@@ -153,9 +146,10 @@ outputs:
 
   - name: libint-fortran-devel
     build:
+      skip: true                                                             # [win]
       run_exports:
-          # runtime needs libint, not libint-fortran, but I think this is now to get *exact* libint
-        - {{ pin_subpackage('libint-fortran', max_pin='x') }}
+          # runtime needs libint, not libint-fortran-devel, but I think this is now to get *exact* libint
+        - {{ pin_subpackage('libint-fortran-devel', max_pin='x') }}
     requirements:
       build:
         - {{ stdlib("c") }}
