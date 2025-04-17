@@ -45,35 +45,37 @@ build:
     - ENABLE_FORTRAN=ON       # [unix]
     - ENABLE_FORTRAN=OFF      # [win]
 
-requirements:
-  build:
-    - {{ stdlib("c") }}
-    - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
-    - {{ compiler("fortran") }}  # [unix]
-    - cmake
-    - ninja
-  host:
-    # note: alternately, could withhold boost here so that a vendored subset of boost headers gets installed
-    #   at include/libint2/boost/ . Then downstream builds against libint2 don't need a Boost dependency.
-    # * OpenMP only present in one L2 file
-    - libboost-headers
-    - eigen
-    - llvm-openmp  # [unix]
+#requirements:
+#  build:
+#    - {{ stdlib("c") }}
+#    - {{ compiler("c") }}
+#    - {{ compiler("cxx") }}
+#    - {{ compiler("fortran") }}  # [unix]
+#    - cmake
+#    - ninja
+#  host:
+#    # note: alternately, could withhold boost here so that a vendored subset of boost headers gets installed
+#    #   at include/libint2/boost/ . Then downstream builds against libint2 don't need a Boost dependency.
+#    # * OpenMP only present in one L2 file
+#    - libboost-headers
+#    - eigen
+#    - llvm-openmp  # [unix]
 
 outputs:
   - name: libint
     build:
+      script: build-cxx.sh                # [unix]
+      script: bld-cxx.bat                 # [win]
       run_exports:
         - {{ pin_subpackage('libint', max_pin='x') }}
       ignore_run_exports_from:
-        - {{ compiler('fortran') }}  # [linux or (osx and not arm64)]
+        - {{ compiler('fortran') }}
     requirements:
       build:
         - {{ stdlib("c") }}
         - {{ compiler("c") }}
         - {{ compiler("cxx") }}
-        - {{ compiler("fortran") }}       # [unix]
+#        - {{ compiler("fortran") }}       # [unix]
         - cmake
         - ninja
       host:
