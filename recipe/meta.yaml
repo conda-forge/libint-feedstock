@@ -46,15 +46,15 @@ source:
 build:
   number: 3
   script_env:
-    - ENABLE_FORTRAN=ON       # [unix]
-    - ENABLE_FORTRAN=OFF      # [win]
+    - ENABLE_FORTRAN=ON                   # [unix]
+    - ENABLE_FORTRAN=OFF                  # [win]
 
 requirements:
   build:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - {{ compiler("fortran") }}  # [unix]
+    - {{ compiler("fortran") }}           # [unix]
     - cmake
     - ninja
   host:
@@ -63,12 +63,10 @@ requirements:
     # * OpenMP only present in one L2 file
     - libboost-headers
     - eigen
-    - llvm-openmp  # [unix]
+    - llvm-openmp                         # [unix]
 
 outputs:
   - name: libint
-    #script: build-cxx.sh                  # [unix]
-    #script: bld-cxx.bat                   # [win]
     build:
       run_exports:
         - {{ pin_subpackage('libint', max_pin='x') }}
@@ -151,12 +149,10 @@ outputs:
         - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\MakeVars.features  # [win]
 
   - name: libint-fortran-devel
-    #script: build-cxx.sh                  # [unix]
-    #script: bld-cxx.bat                   # [win]
     build:
       skip: true                          # [win]
       run_exports:
-          # runtime needs libint, not libint-fortran-devel, but I think this is now to get *exact* libint
+          # runtime needs libint, not libint-fortran-devel, but I think this is how to get *exact* libint
         - {{ pin_subpackage('libint-fortran-devel', max_pin='x') }}
     requirements:
       build:
