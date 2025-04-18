@@ -67,8 +67,8 @@ build:
 
 outputs:
   - name: libint
-    script: build-cxx.sh                  # [unix]
-    script: bld-cxx.bat                   # [win]
+    #script: build-cxx.sh                  # [unix]
+    #script: bld-cxx.bat                   # [win]
     build:
       run_exports:
         - {{ pin_subpackage('libint', max_pin='x') }}
@@ -77,7 +77,6 @@ outputs:
         - {{ stdlib("c") }}
         - {{ compiler("c") }}
         - {{ compiler("cxx") }}
-#        - {{ compiler("fortran") }}       # [unix]
         - cmake
         - ninja
       host:
@@ -152,8 +151,8 @@ outputs:
         - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\MakeVars.features  # [win]
 
   - name: libint-fortran-devel
-    script: build-cxx.sh                  # [unix]
-    script: bld-cxx.bat                   # [win]
+    #script: build-cxx.sh                  # [unix]
+    #script: bld-cxx.bat                   # [win]
     build:
       skip: true                          # [win]
       run_exports:
