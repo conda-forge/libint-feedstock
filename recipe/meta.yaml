@@ -44,7 +44,7 @@ source:
   # * W times out and linux-aarch64 abandons at ~5h, so these use smaller src
 
 build:
-  number: 3
+  number: 4
   script_env:
     - ENABLE_FORTRAN=ON                   # [unix]
     - ENABLE_FORTRAN=OFF                  # [win]
@@ -54,7 +54,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - {{ compiler("fortran") }}           # [unix]
+    - {{ compiler("fortran") }}
     - cmake
     - ninja
   host:
