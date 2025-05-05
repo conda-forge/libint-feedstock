@@ -1,5 +1,5 @@
 c_compiler:
-- vs2019
+- clang-cl
 c_stdlib:
 - vs
 channel_sources:
@@ -7,7 +7,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2019
+- clang-cl
 libboost_headers:
 - '1.86'
 target_platform:

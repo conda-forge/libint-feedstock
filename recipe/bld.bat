@@ -1,4 +1,5 @@
 @ECHO ON
+set "LDFLAGS=%LDFLAGS:/link =%"
 
 cmake %CMAKE_ARGS% ^
       -G "Ninja" ^
@@ -6,8 +7,6 @@ cmake %CMAKE_ARGS% ^
       -B build ^
       -D CMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
       -D CMAKE_BUILD_TYPE=Release ^
-      -D CMAKE_C_COMPILER=clang-cl ^
-      -D CMAKE_CXX_COMPILER=clang-cl ^
       -D CMAKE_C_FLAGS="/wd4018 /wd4101 /wd4996 %CFLAGS%" ^
       -D CMAKE_CXX_FLAGS="/wd4018 /wd4101 /wd4996 %CXXFLAGS%" ^
       -D CMAKE_INSTALL_LIBDIR="lib" ^
@@ -19,7 +18,7 @@ cmake %CMAKE_ARGS% ^
       -D ENABLE_XHOST=OFF ^
       -D REQUIRE_CXX_API=ON ^
       -D REQUIRE_CXX_API_COMPILED=OFF ^
-      -D ENABLE_FORTRAN=OFF ^
+      -D ENABLE_FORTRAN="%ENABLE_FORTRAN%" ^
       -D ENABLE_PYTHON=OFF ^
       -D BUILD_TESTING=OFF ^
       -D CMAKE_PREFIX_PATH="%LIBRARY_PREFIX%"
