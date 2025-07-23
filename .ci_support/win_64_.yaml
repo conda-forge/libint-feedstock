@@ -9,6 +9,6 @@ channel_targets:
 cxx_compiler:
 - clang-cl
 libboost_headers:
-- '1.86'
+- '1.88'
 target_platform:
 - win-64
