@@ -107,12 +107,12 @@ outputs:
         - eigen
         - libboost-headers
       files:
-        - tests/hartree-fock/CMakeLists.txt
+        - tests/export/hartree-fock/CMakeLists.txt
       source_files:
-        - MakeVars.features
-        - tests/hartree-fock/h2o_rotated.xyz
-        - tests/hartree-fock/hartree-fock++.cc
-        - tests/hartree-fock/hartree-fock++-validate.py
+        - features
+        - tests/export/hartree-fock/h2o_rotated.xyz
+        - tests/export/hartree-fock/hartree-fock++.cc
+        - tests/export/hartree-fock/hartree-fock++-validate.py
       commands:
         - ls -l $PREFIX/lib                                                  # [unix]
         - ls -l $PREFIX/lib/cmake/libint2                                    # [unix]
@@ -142,13 +142,13 @@ outputs:
         - ldd -v $PREFIX/lib/libint2$SHLIB_EXT                               # [linux and build_platform == target_platform]
         - otool -L $PREFIX/lib/libint2$SHLIB_EXT                             # [osx]
         # Actually test
-        - cd tests/hartree-fock
+        - cd export/tests/hartree-fock
         - set "LDFLAGS=%LDFLAGS:/link =%"                                    # [win]
         - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="${PREFIX}"          # [unix]
         - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_BUILD_TYPE=Release  # [win]
         - cmake --build build
-        - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../MakeVars.features  # [unix]
-        - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\MakeVars.features  # [win]
+        - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../../features  # [unix]
+        - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\..\\features  # [win]
 
   - name: libint-fortran-devel
     build:
