@@ -107,12 +107,12 @@ outputs:
         - eigen
         - libboost-headers
       files:
-        - tests/export/hartree-fock/CMakeLists.txt
+        - export/tests/hartree-fock/CMakeLists.txt
       source_files:
         - features
-        - tests/export/hartree-fock/h2o_rotated.xyz
-        - tests/export/hartree-fock/hartree-fock++.cc
-        - tests/export/hartree-fock/hartree-fock++-validate.py
+        - export/tests/hartree-fock/h2o_rotated.xyz
+        - export/tests/hartree-fock/hartree-fock++.cc
+        - export/tests/hartree-fock/hartree-fock++-validate.py
       commands:
         - ls -l $PREFIX/lib                                                  # [unix]
         - ls -l $PREFIX/lib/cmake/libint2                                    # [unix]
