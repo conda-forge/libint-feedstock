@@ -1,6 +1,6 @@
 {% set name = "libint" %}
 {% set version = "2.9.0" %}
-{% set version_src = "2.9.0" %}
+{% set version_src = "2.11.2" %}
 
 # toy-sized source tarball for recipe testing
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-2-2-3-2_0.tgz" %}
