@@ -5,6 +5,8 @@
 # toy-sized source tarball for recipe testing
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-2-2-3-2_0.tgz" %}
 {% set sha256_toy = "280744ec50d57e36c1147b87aa5dab42ae088cd16e6a07cbe0020f48597b24cb" %}
+{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.11.2-2-2-3-2_0.tgz" %}
+{% set sha256_toy = "cd97986c8aab03ab2052f74a6ea8bcab4b6ec9b32ef521fa50db03b3aa99c5ce" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
 {% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-6-6-3-7-7-4_mm10f12ob2_0.tgz" %}
@@ -29,14 +31,14 @@ package:
 #   take <30m and all recipe tests will still pass. This is highly recommended for sanity.
 
 source:
-  # url: {{ url_toy }}
-  url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
-  url: {{ url_basic }}        # [win]
-  url: {{ url_littlebells }}  # [aarch64 or ppc64le]
-  # sha256: {{ sha256_toy }}
-  sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
-  sha256: {{ sha256_basic }}  # [win]
-  sha256: {{ sha256_littlebells }}  # [aarch64 or ppc64le]
+  url: {{ url_toy }}
+  #url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
+  #url: {{ url_basic }}        # [win]
+  #url: {{ url_littlebells }}  # [aarch64 or ppc64le]
+  sha256: {{ sha256_toy }}
+  #sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
+  #sha256: {{ sha256_basic }}  # [win]
+  #sha256: {{ sha256_littlebells }}  # [aarch64 or ppc64le]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs aren't upstream release artifacts but have been generated with
