@@ -104,7 +104,6 @@ outputs:
         - python 3.12  # only for running a validation script, so suppress all but one Py version. update as necessary.
         - eigen
         - libboost-headers
-        - libboost-devel
       files:
         - tests/hartree-fock/CMakeLists.txt
       source_files:
@@ -128,7 +127,6 @@ outputs:
         - test ! -f $PREFIX/include/libint2/boost/preprocessor.hpp           # [unix]
         - test -f $PREFIX/share/libint/{{ version_src }}/basis/sto-6g.g94    # [unix]
         - test -f $PREFIX/lib/cmake/libint2/libint2-config.cmake             # [unix]
-        - cat $PREFIX/lib/cmake/libint2/libint2-config.cmake             # [unix]
         - test ! -f $PREFIX/include/libint_f.mod                             # [unix]
         - if not exist %PREFIX%\\Library\\include\\libint2.h exit 1          # [win]
         - if not exist %PREFIX%\\Library\\include\\libint2\\engine.h exit 1  # [win]
