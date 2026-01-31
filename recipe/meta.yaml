@@ -1,10 +1,12 @@
 {% set name = "libint" %}
 {% set version = "2.9.0" %}
-{% set version_src = "2.9.0" %}
+{% set version_src = "2.11.2" %}
 
 # toy-sized source tarball for recipe testing
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-2-2-3-2_0.tgz" %}
 {% set sha256_toy = "280744ec50d57e36c1147b87aa5dab42ae088cd16e6a07cbe0020f48597b24cb" %}
+{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.11.2-2-2-3-2_0.tgz" %}
+{% set sha256_toy = "fb3530c05d3b488c2ae3acf4126aa550df8a772922e758edc0b5e7ebfa7bd737" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
 {% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-6-6-3-7-7-4_mm10f12ob2_0.tgz" %}
@@ -29,14 +31,14 @@ package:
 #   take <30m and all recipe tests will still pass. This is highly recommended for sanity.
 
 source:
-  # url: {{ url_toy }}
-  url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
-  url: {{ url_basic }}        # [win]
-  url: {{ url_littlebells }}  # [aarch64 or ppc64le]
-  # sha256: {{ sha256_toy }}
-  sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
-  sha256: {{ sha256_basic }}  # [win]
-  sha256: {{ sha256_littlebells }}  # [aarch64 or ppc64le]
+  url: {{ url_toy }}
+  #url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
+  #url: {{ url_basic }}        # [win]
+  #url: {{ url_littlebells }}  # [aarch64 or ppc64le]
+  sha256: {{ sha256_toy }}
+  #sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
+  #sha256: {{ sha256_basic }}  # [win]
+  #sha256: {{ sha256_littlebells }}  # [aarch64 or ppc64le]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs aren't upstream release artifacts but have been generated with
@@ -87,14 +89,12 @@ outputs:
       - lib/libint2{{ SHLIB_EXT }}*       # [linux]
       - lib/libint2.*dylib                # [osx]
       - lib/cmake/libint2                 # [unix]
-      - lib/pkgconfig/libint2.pc          # [unix]
       - share/libint                      # [unix]
       - Library/include/libint2.h*        # [win]
       - Library/include/libint2           # [win]
       - Library/bin/int2*                 # [win]
       - Library/lib/int2*                 # [win]
       - Library/lib/cmake/libint2         # [win]
-      - Library/lib/pkgconfig/libint2.pc  # [win]
       - Library/share/libint              # [win]
     test:
       requires:
@@ -107,7 +107,7 @@ outputs:
       files:
         - tests/hartree-fock/CMakeLists.txt
       source_files:
-        - MakeVars.features
+        - features
         - tests/hartree-fock/h2o_rotated.xyz
         - tests/hartree-fock/hartree-fock++.cc
         - tests/hartree-fock/hartree-fock++-validate.py
@@ -127,14 +127,12 @@ outputs:
         - test ! -f $PREFIX/include/libint2/boost/preprocessor.hpp           # [unix]
         - test -f $PREFIX/share/libint/{{ version_src }}/basis/sto-6g.g94    # [unix]
         - test -f $PREFIX/lib/cmake/libint2/libint2-config.cmake             # [unix]
-        - test -f $PREFIX/lib/pkgconfig/libint2.pc                           # [unix]
         - test ! -f $PREFIX/include/libint_f.mod                             # [unix]
         - if not exist %PREFIX%\\Library\\include\\libint2.h exit 1          # [win]
         - if not exist %PREFIX%\\Library\\include\\libint2\\engine.h exit 1  # [win]
         - if exist %PREFIX%\\Library\\include\\libint2\\boost\\preprocessor.hpp exit 1  # [win]
         - if not exist %PREFIX%\\Library\\share\\libint\\{{ version_src }}\\basis\\sto-6g.g94 exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\cmake\\libint2\\libint2-config.cmake exit 1  # [win]
-        - if not exist %PREFIX%\\Library\\lib\\pkgconfig\\libint2.pc exit 1  # [win]
         - if exist %PREFIX%\\Library\\include\\libint_f.mod exit 1           # [win]
         # Inspect linkage
         - ldd -v $PREFIX/lib/libint2$SHLIB_EXT                               # [linux and build_platform == target_platform]
@@ -145,8 +143,8 @@ outputs:
         - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="${PREFIX}"          # [unix]
         - cmake -S. -Bbuild -GNinja -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_BUILD_TYPE=Release  # [win]
         - cmake --build build
-        - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../MakeVars.features  # [unix]
-        - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\MakeVars.features  # [win]
+        - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../features  # [unix]
+        - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\features  # [win]
 
   - name: libint-fortran-devel
     build:
