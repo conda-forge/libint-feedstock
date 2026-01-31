@@ -6,7 +6,7 @@
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-2-2-3-2_0.tgz" %}
 {% set sha256_toy = "280744ec50d57e36c1147b87aa5dab42ae088cd16e6a07cbe0020f48597b24cb" %}
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.11.2-2-2-3-2_0.tgz" %}
-{% set sha256_toy = "dcb39727e2e57771a5dba26028d1959a77a8233427958fdf126d650ddd617d3f" %}
+{% set sha256_toy = "fb3530c05d3b488c2ae3acf4126aa550df8a772922e758edc0b5e7ebfa7bd737" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
 {% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-6-6-3-7-7-4_mm10f12ob2_0.tgz" %}
