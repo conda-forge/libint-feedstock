@@ -1,12 +1,10 @@
 {% set name = "libint" %}
-{% set version = "2.9.0" %}
-{% set version_src = "2.11.2" %}
+{% set version = "2.13.0" %}
+{% set version_src = "2.13.0" %}
 
 # toy-sized source tarball for recipe testing
-{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-2-2-3-2_0.tgz" %}
-{% set sha256_toy = "280744ec50d57e36c1147b87aa5dab42ae088cd16e6a07cbe0020f48597b24cb" %}
-{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.11.2-2-2-3-2_0.tgz" %}
-{% set sha256_toy = "fb3530c05d3b488c2ae3acf4126aa550df8a772922e758edc0b5e7ebfa7bd737" %}
+{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.0-2-2-3-2_0.tgz" %}
+{% set sha256_toy = "sha256:96a754053fd3c0f1f9ceef61c54c8cfa56a99e70b151269037582c7cbb7a2655" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
 {% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-6-6-3-7-7-4_mm10f12ob2_0.tgz" %}
@@ -46,7 +44,7 @@ source:
   # * W times out and linux-aarch64 abandons at ~5h, so these use smaller src
 
 build:
-  number: 4
+  number: 0
   script_env:
     - ENABLE_FORTRAN=ON                   # [unix]
     - ENABLE_FORTRAN=OFF                  # [win]
@@ -195,3 +193,10 @@ extra:
   recipe-maintainers:
     - felipeZ
     - loriab
+
+# HISTORY
+# * pc files: output: libint, first two: files, second two: test/commands
+      # - lib/pkgconfig/libint2.pc          # [unix]
+      # - Library/lib/pkgconfig/libint2.pc  # [win]
+        # - test -f $PREFIX/lib/pkgconfig/libint2.pc                           # [unix]
+        # - if not exist %PREFIX%\\Library\\lib\\pkgconfig\\libint2.pc exit 1  # [win]
