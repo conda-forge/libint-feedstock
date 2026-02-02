@@ -1,5 +1,6 @@
 azure:
-  store_build_artifacts: true
+  store_build_artifacts: false
+  timeout_minutes: 420
 build_platform:
   linux_aarch64: linux_64
   linux_ppc64le: linux_64
