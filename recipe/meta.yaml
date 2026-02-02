@@ -7,8 +7,8 @@
 {% set sha256_toy = "96a754053fd3c0f1f9ceef61c54c8cfa56a99e70b151269037582c7cbb7a2655" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
-{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.9.0-6-6-3-7-7-4_mm10f12ob2_0.tgz" %}
-{% set sha256_bells = "39a409afe28c43847a727200056035af56e1c02dcee97ff5ed5275395d6ed3cc" %}
+{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.0-7-6-3-7-7-4_mm10f12ob2_0.tgz" %}
+{% set sha256_bells = "47f5b3c83bb590d8a4f2c1c4b1c2b2a83777ffd6324b58740154343709f61cbf" %}
 
 # production source tarball: no Hessian ERIs but works for W
 {% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.0-6-6-7-7_mm10f12ob2_0.tgz" %}
@@ -30,13 +30,11 @@ package:
 
 source:
   # url: {{ url_toy }}
-  #TODOurl: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
-  url: {{ url_littlebells }}        # [unix and not (aarch64 or ppc64le)]
+  url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
   url: {{ url_basic }}        # [win]
   url: {{ url_littlebells }}  # [aarch64 or ppc64le]
   # sha256: {{ sha256_toy }}
-  #TODOsha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
-  sha256: {{ sha256_littlebells }}  # [unix and not (aarch64 or ppc64le)]
+  sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
   sha256: {{ sha256_basic }}  # [win]
   sha256: {{ sha256_littlebells }}  # [aarch64 or ppc64le]
   # note: source/url above is a tarball of generated library source code.
