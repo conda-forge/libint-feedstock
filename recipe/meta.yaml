@@ -1,21 +1,20 @@
 {% set name = "libint" %}
-{% set version = "2.13.0" %}
-{% set version_src = "2.13.0" %}
+{% set version = "2.13.1" %}
+{% set version_src = "2.13.1" %}
 
 # toy-sized source tarball for recipe testing
-{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.0-2-2-3-2_0.tgz" %}
-{% set sha256_toy = "96a754053fd3c0f1f9ceef61c54c8cfa56a99e70b151269037582c7cbb7a2655" %}
+{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-{{ version }}-2-2-3-2_0.tgz" %}
+{% set sha256_toy = "9f870d3a73701c5c69ba6f5c25ca6ce5f14303988f121bfd635511f6543ce76f" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
-{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.0-7-6-3-7-7-4_mm10f12ob2_0.tgz" %}
-{% set sha256_bells = "47f5b3c83bb590d8a4f2c1c4b1c2b2a83777ffd6324b58740154343709f61cbf" %}
+{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-{{ version }}-7-6-3-7-7-4_mm10f12ob2_0.tgz" %}
 
 # production source tarball: no Hessian ERIs but works for W
-{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.0-6-6-7-7_mm10f12ob2_0.tgz" %}
-{% set sha256_basic = "1a2c3634aef308cb15beda507a714e6803dcb1331f305d9cf3ba0728b10be594" %}
+{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-{{ version }}-6-6-7-7_mm10f12ob2_0.tgz" %}
+{% set sha256_basic = "41896991a89e04dbfe207f3f27238e99d3d19ddcb2a0d4fce46c83c8f1f21467" %}
 
-{% set url_littlebells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.0-5-5-3-6-6-4_mm10f12ob2_0.tgz" %}
-{% set sha256_littlebells = "b81e803b7828f7979df1015ece3a5f26cff4c3ce1fd11bcaa12e35099fc51656" %}
+{% set url_littlebells = "https://github.com/loriab/libint/releases/download/v0.1/libint-{{ version }}-5-5-3-6-6-4_mm10f12ob2_0.tgz" %}
+{% set sha256_littlebells = "8d2ee07a8178cfbca354750ef9445cfe37ecaab0d4ab95222b457587588ce9e7" %}
 
 # source tarball pattern for upstream
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
@@ -30,11 +29,11 @@ package:
 
 source:
   # url: {{ url_toy }}
-  url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
+  url: {{ url_toy }}        # [unix and not (aarch64 or ppc64le)]
   url: {{ url_basic }}        # [win]
   url: {{ url_littlebells }}  # [aarch64 or ppc64le]
   # sha256: {{ sha256_toy }}
-  sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
+  sha256: {{ sha256_toy }}  # [unix and not (aarch64 or ppc64le)]
   sha256: {{ sha256_basic }}  # [win]
   sha256: {{ sha256_littlebells }}  # [aarch64 or ppc64le]
   # note: source/url above is a tarball of generated library source code.

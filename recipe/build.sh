@@ -34,9 +34,10 @@ cmake ${CMAKE_ARGS} \
 
 cmake --build build --target install
 
-# generation of the source tarball included the following settings (plus ints classes, AM, deriv)
+# generation of the source tarball used the following default settings (plus ints classes, AM, deriv).
+#   See the NOTES file for the complete commands.
 #  -D LIBINT2_SHGAUSS_ORDERING=standard
 #  -D LIBINT2_CARTGAUSS_ORDERING=standard
 #  -D LIBINT2_SHELL_SET=standard
-#  -D ERI3_PURE_SH=OFF
-#  -D ERI2_PURE_SH=OFF
+#  -D LIBINT2_ERI3_PURE_SH=OFF
+#  -D LIBINT2_ERI2_PURE_SH=OFF

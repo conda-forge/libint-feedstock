@@ -7,6 +7,8 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
 #   configuration.cc and the MAX_AM_ERI added to top-level CMakeLists.txt
 # 2.8.1 is at v2.8.1 tag. These have had their eri_ffff_d0-like codes added to configuration.cc and
 #   the MAX_AM_ERI added to top-level CMakeLists.txt
+# 2.13.0 in Feb 2026 moves to cmake+cmake buildsys, hence the changeovers below and no more src patching for eri_ffff_d0, etc.
+#   One runs the configuration step below, then `cmake --build build --target export` (serial), then collect the tarball.
 
 
 # c-f toy
@@ -23,6 +25,16 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
     --enable-1body=1 \
     --disable-1body-property-derivs \
     --with-multipole-max-order=2
+cmake -S. -Bbuild \
+    -G Ninja \
+    -D LIBINT2_MAX_AM="3;2" \
+    -D LIBINT2_ERI_MAX_AM="2;2" \
+    -D LIBINT2_ERI3_MAX_AM="3;2" \
+    -D LIBINT2_ENABLE_ERI=1 \
+    -D LIBINT2_ENABLE_ERI3=1 \
+    -D LIBINT2_ENABLE_ONEBODY=1 \
+    -D LIBINT2_DISABLE_ONEBODY_PROPERTY_DERIVS=ON \
+    -D LIBINT2_MULTIPOLE_MAX_ORDER=2
 
 # c-f basic
 #   uploaded as libint-2.8.0-dev1-5-4-6-5_mm4f12ob2_0.tgz
