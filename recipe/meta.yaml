@@ -3,17 +3,18 @@
 {% set version_src = "2.13.1" %}
 
 # toy-sized source tarball for recipe testing
-{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-{{ version }}-2-2-3-2_0.tgz" %}
+{% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-2-2-3-2_0.tgz" %}
 {% set sha256_toy = "9f870d3a73701c5c69ba6f5c25ca6ce5f14303988f121bfd635511f6543ce76f" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
-{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-{{ version }}-7-6-3-7-7-4_mm10f12ob2_0.tgz" %}
+{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-7-6-3-7-7-4_mm10f12ob2_0.tgz" %}
+{% set sha256_bells = "" %}
 
 # production source tarball: no Hessian ERIs but works for W
-{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-{{ version }}-6-6-7-7_mm10f12ob2_0.tgz" %}
+{% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-6-6-7-7_mm10f12ob2_0.tgz" %}
 {% set sha256_basic = "41896991a89e04dbfe207f3f27238e99d3d19ddcb2a0d4fce46c83c8f1f21467" %}
 
-{% set url_littlebells = "https://github.com/loriab/libint/releases/download/v0.1/libint-{{ version }}-5-5-3-6-6-4_mm10f12ob2_0.tgz" %}
+{% set url_littlebells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-5-5-3-6-6-4_mm10f12ob2_0.tgz" %}
 {% set sha256_littlebells = "8d2ee07a8178cfbca354750ef9445cfe37ecaab0d4ab95222b457587588ce9e7" %}
 
 # source tarball pattern for upstream
