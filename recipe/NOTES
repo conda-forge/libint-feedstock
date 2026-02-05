@@ -25,6 +25,7 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
     --enable-1body=1 \
     --disable-1body-property-derivs \
     --with-multipole-max-order=2
+#   uploaded  4 Feb 2026 as libint-2.13.1-2-2-3-2_0.tgz (at tag v2.13.1)
 cmake -S. -Bbuild \
     -G Ninja \
     -D LIBINT2_MAX_AM="3;2" \
@@ -62,6 +63,23 @@ cmake -S. -Bbuild \
     --with-eri3-max-am=7,7 \
     --with-eri2-max-am=7,7 \
     --with-max-am=6,6
+#   uploaded  4 Feb 2026 as libint-2.13.1-7-6-7-7_mm10f12ob2_0.tgz (at v2.13.1 tag; 16252 gen/*cc files)
+#       above used bump in 4c energy ints to AM=7 (ERI & ONEBODY) analogous with bells, W builds in 4.5h
+cmake -S. -Bbuild \
+    -G Ninja \
+    -D LIBINT2_ENABLE_ERI=1 \
+    -D LIBINT2_ENABLE_ERI3=1 \
+    -D LIBINT2_ENABLE_ERI2=1 \
+    -D LIBINT2_ENABLE_ONEBODY=2 \
+    -D LIBINT2_ENABLE_G12=1 \
+    -D LIBINT2_DISABLE_ONEBODY_PROPERTY_DERIVS=ON \
+    -D LIBINT2_MULTIPOLE_MAX_ORDER=10 \
+    -D LIBINT2_G12_MAX_AM=4 \
+    -D LIBINT2_ONEBODY_MAX_AM="7;6;3" \
+    -D LIBINT2_ERI_MAX_AM="7;6" \
+    -D LIBINT2_ERI3_MAX_AM="7;7" \
+    -D LIBINT2_ERI2_MAX_AM="7;7" \
+    -D LIBINT2_MAX_AM="6;6;3"
 
 # c-f bells
 #   uploaded as libint-2.8.0-dev1-5-4-3-6-5-4_mm4f12ob2_0.tgz
@@ -89,23 +107,23 @@ cmake -S. -Bbuild \
     --with-eri3-max-am=7,7,4 \
     --with-eri2-max-am=7,7,4 \
     --with-max-am=6,6,3
-
-# cmake bells
-    -D LIBINT2_SHGAUSS_ORDERING=standard \
-    -D ERI3_PURE_SH=OFF \
-    -D ERI2_PURE_SH=OFF \
-    -D ENABLE_ERI=2 \
-    -D ENABLE_ERI3=2 \
-    -D ENABLE_ERI2=2 \
-    -D ENABLE_ONEBODY=2 \
-    -D ENABLE_G12=1 \
-    -D DISABLE_ONEBODY_PROPERTY_DERIVS=ON \
-    -D MULTIPOLE_MAX_ORDER=4 \
-    -D WITH_G12_MAX_AM=4 \
-    -D WITH_ERI_MAX_AM="5;4;3" \
-    -D WITH_ERI3_MAX_AM="6;5;4" \
-    -D WITH_ERI2_MAX_AM="6;5;4" \
-    -D WITH_MAX_AM="6;5;4"
+#   uploaded  4 Feb 2026 as libint-2.13.1-7-6-3-7-7-4_mm10f12ob2_0.tgz (at v2.13.1 tag; 20754 gen/*cc files)
+#       above used bump in 4c energy ints to AM=7 (ERI & ONEBODY), L builds in 4.5h, Macs less
+cmake -S. -Bbuild \
+    -G Ninja \
+    -D LIBINT2_ENABLE_ERI=2 \
+    -D LIBINT2_ENABLE_ERI3=2 \
+    -D LIBINT2_ENABLE_ERI2=2 \
+    -D LIBINT2_ENABLE_ONEBODY=2 \
+    -D LIBINT2_ENABLE_G12=1 \
+    -D LIBINT2_DISABLE_ONEBODY_PROPERTY_DERIVS=ON \
+    -D LIBINT2_MULTIPOLE_MAX_ORDER=10 \
+    -D LIBINT2_G12_MAX_AM=4 \
+    -D LIBINT2_ONEBODY_MAX_AM="7;6;3" \
+    -D LIBINT2_ERI_MAX_AM="7;6;3" \
+    -D LIBINT2_ERI3_MAX_AM="7;7;4" \
+    -D LIBINT2_ERI2_MAX_AM="7;7;4" \
+    -D LIBINT2_MAX_AM="6;6;3"
 
 # c-f little bells (for aarch64)
 #   uploaded as libint-2.9.0-5-5-3-6-6-4_mm10f12ob2_0.tgz (at v2.9.0 tag; patched)
@@ -122,4 +140,18 @@ cmake -S. -Bbuild \
     --with-eri3-max-am=6,6,4 \
     --with-eri2-max-am=6,6,4 \
     --with-max-am=5,5,3
-
+#   uploaded  4 Feb 2026 as libint-2.13.1-5-5-3-6-6-4_mm10f12ob2_0.tgz (at v2.13.1 tag; 16857 gen/*cc files)
+cmake -S. -Bbuild \
+    -G Ninja \
+    -D LIBINT2_ENABLE_ERI=2 \
+    -D LIBINT2_ENABLE_ERI3=2 \
+    -D LIBINT2_ENABLE_ERI2=2 \
+    -D LIBINT2_ENABLE_ONEBODY=2 \
+    -D LIBINT2_ENABLE_G12=1 \
+    -D LIBINT2_DISABLE_ONEBODY_PROPERTY_DERIVS=ON \
+    -D LIBINT2_MULTIPOLE_MAX_ORDER=10 \
+    -D LIBINT2_G12_MAX_AM=4 \
+    -D LIBINT2_ERI_MAX_AM="5;5;3" \
+    -D LIBINT2_ERI3_MAX_AM="6;6;4" \
+    -D LIBINT2_ERI2_MAX_AM="6;6;4" \
+    -D LIBINT2_MAX_AM="5;5;3"
