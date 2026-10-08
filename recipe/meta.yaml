@@ -19,7 +19,7 @@
 {% set sha256_littlebells = "8d2ee07a8178cfbca354750ef9445cfe37ecaab0d4ab95222b457587588ce9e7" %}
 
 {% set url_hessbells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-7-6-4-7-7-6_mm10f12ob2_0.tgz" %}
-{% set sha256_hessbells = "sha256:48393150c824ef0ccd9823dceca859f4a5b2eb12c4c50c0506a0a9cb71bf8a11" %}
+{% set sha256_hessbells = "48393150c824ef0ccd9823dceca859f4a5b2eb12c4c50c0506a0a9cb71bf8a11" %}
 
 # source tarball pattern for upstream
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
