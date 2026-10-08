@@ -14,8 +14,12 @@
 {% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-7-6-7-7_mm10f12ob2_0.tgz" %}
 {% set sha256_basic = "41896991a89e04dbfe207f3f27238e99d3d19ddcb2a0d4fce46c83c8f1f21467" %}
 
+# production source tarball: w/Hessian but lighter E/G that works on the other L arch (could try big one again once non-emulated)
 {% set url_littlebells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-5-5-3-6-6-4_mm10f12ob2_0.tgz" %}
 {% set sha256_littlebells = "8d2ee07a8178cfbca354750ef9445cfe37ecaab0d4ab95222b457587588ce9e7" %}
+
+{% set url_hessbells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-7-6-4-7-7-6_mm10f12ob2_0.tgz" %}
+{% set sha256_hessbells = "sha256:48393150c824ef0ccd9823dceca859f4a5b2eb12c4c50c0506a0a9cb71bf8a11" %}
 
 # source tarball pattern for upstream
 # {% set url = "https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz" %}
@@ -30,11 +34,11 @@ package:
 
 source:
   # url: {{ url_toy }}
-  url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
+  url: {{ url_hessbells }}        # [unix and not (aarch64 or ppc64le)]
   url: {{ url_basic }}        # [win]
   url: {{ url_littlebells }}  # [aarch64 or ppc64le]
   # sha256: {{ sha256_toy }}
-  sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
+  sha256: {{ sha256_hessbells }}  # [unix and not (aarch64 or ppc64le)]
   sha256: {{ sha256_basic }}  # [win]
   sha256: {{ sha256_littlebells }}  # [aarch64 or ppc64le]
   # note: source/url above is a tarball of generated library source code.
