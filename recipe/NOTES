@@ -124,6 +124,16 @@ cmake -S. -Bbuild \
     -D LIBINT2_ERI3_MAX_AM="7;7;4" \
     -D LIBINT2_ERI2_MAX_AM="7;7;4" \
     -D LIBINT2_MAX_AM="6;6;3"
+#   uploaded  8 Oct 2026 as libint-2.13.1-7-6-4-7-7-6_mm10f12ob2_0.tgz (at v2.13.1 tag; 24906 gen/*cc files)
+#       above sometimes labeled hessbells. bumps hessian ints 4c to AM=4 (ERI & ONEBODY) and 3c to AM=6. L/M build under 2.5h
+cmake -S. -Bbuild \
+    -G Ninja \
+    -D LIBINT2_ONEBODY_MAX_AM="7;6;4" \
+    -D LIBINT2_ERI_MAX_AM="7;6;4" \
+    -D LIBINT2_ERI3_MAX_AM="7;7;6" \
+    -D LIBINT2_ERI2_MAX_AM="7;7;6" \
+    -D LIBINT2_MAX_AM="7;6;3"
+
 
 # c-f little bells (for aarch64)
 #   uploaded as libint-2.9.0-5-5-3-6-6-4_mm10f12ob2_0.tgz (at v2.9.0 tag; patched)

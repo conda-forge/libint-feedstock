@@ -9,6 +9,7 @@ cmake %CMAKE_ARGS% ^
       -D CMAKE_BUILD_TYPE=Release ^
       -D CMAKE_C_FLAGS="/wd4018 /wd4101 /wd4996 %CFLAGS%" ^
       -D CMAKE_CXX_FLAGS="/wd4018 /wd4101 /wd4996 %CXXFLAGS%" ^
+      -D CMAKE_UNITY_BUILD_BATCH_SIZE=4 ^
       -D CMAKE_INSTALL_LIBDIR="lib" ^
       -D CMAKE_INSTALL_INCLUDEDIR="include" ^
       -D CMAKE_INSTALL_BINDIR="bin" ^
