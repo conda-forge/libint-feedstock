@@ -2,7 +2,7 @@
 {% set version = "2.14.1" %}
 {% set version_src = "2.14.1" %}
 
-# toy-sized source tarball for recipe testing
+# toy-sized source tarball for recipe testing (incl. RKB; L2 tests halting)
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.14.1-2-2-3-2_0.tgz" %}
 {% set sha256_toy = "61672518cdd6baf46c5fe2f4477aeb7a89a7c089f207f4226aca2585eba470e0" %}
 
