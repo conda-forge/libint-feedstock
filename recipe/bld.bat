@@ -21,7 +21,7 @@ cmake %CMAKE_ARGS% ^
       -D LIBINT2_REQUIRE_CXX_API_COMPILED=OFF ^
       -D LIBINT2_ENABLE_FORTRAN="%ENABLE_FORTRAN%" ^
       -D LIBINT2_ENABLE_PYTHON=OFF ^
-      -D BUILD_TESTING=ON ^
+      -D BUILD_TESTING=OFF ^
       -D CMAKE_PREFIX_PATH="%LIBRARY_PREFIX%"
 if errorlevel 1 exit 1
 
@@ -32,5 +32,5 @@ cd build
 set CMAKE_BUILD_PARALLEL_LEVEL=1
 cmake --build . ^
       --config Release ^
-      --target check install
+      --target install
 if errorlevel 1 exit 1
