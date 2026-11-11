@@ -34,7 +34,7 @@ cmake ${CMAKE_ARGS} \
 
 # use `--target check install` above to run ctest tests within build phase. adds about 10m.
 
-cmake --build build --target install
+cmake --build build --target check install
 
 # generation of the source tarball used the following default settings (plus ints classes, AM, deriv).
 #   See the NOTES file for the complete commands.
