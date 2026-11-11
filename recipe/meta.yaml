@@ -4,7 +4,7 @@
 
 # toy-sized source tarball for recipe testing
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.14.1-2-2-3-2_0.tgz" %}
-{% set sha256_toy = "2456ea26cdfe2f65cc2e5dc67ee19ea30bb32995c16943006b6b29660bfccb3d" %}
+{% set sha256_toy = "61672518cdd6baf46c5fe2f4477aeb7a89a7c089f207f4226aca2585eba470e0" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
 {% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-7-6-4-7-7-6_mm10f12ob2_0.tgz" %}
