@@ -7,8 +7,8 @@
 {% set sha256_toy = "67bca412250f25470307e2f7bf7500053d2832700acd7a6e7860948b1894370a" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
-{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-7-6-4-7-7-6_mm10f12ob2_0.tgz" %}
-{% set sha256_bells = "48393150c824ef0ccd9823dceca859f4a5b2eb12c4c50c0506a0a9cb71bf8a11" %}
+{% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.14.1-7-6-4-7-7-6_mm10f12ob2_0.tgz" %}
+{% set sha256_bells = "e2ebd1359a9ac3b4a04f4249e356c7688d1e2e5b46a3ad07ac8601b1c030aaa4" %}
 
 # production source tarball: no Hessian ERIs but works for W
 {% set url_basic = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-7-6-7-7_mm10f12ob2_0.tgz" %}
@@ -30,11 +30,13 @@ package:
 #   take <30m and all recipe tests will still pass. This is highly recommended for sanity.
 
 source:
-  url: {{ url_toy }}
+  # url: {{ url_toy }}
+  url: {{ url_bells }}
   # url: {{ url_bells }}        # [unix and not (aarch64 or ppc64le)]
   # url: {{ url_basic }}        # [win]
   # url: {{ url_bells }}        # [aarch64 or ppc64le]
-  sha256: {{ sha256_toy }}
+  # sha256: {{ sha256_toy }}
+  sha256: {{ sha256_bells }}
   # sha256: {{ sha256_bells }}  # [unix and not (aarch64 or ppc64le)]
   # sha256: {{ sha256_basic }}  # [win]
   # sha256: {{ sha256_bells }}  # [aarch64 or ppc64le]
