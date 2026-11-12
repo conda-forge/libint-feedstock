@@ -2,9 +2,9 @@
 {% set version = "2.14.1" %}
 {% set version_src = "2.14.1" %}
 
-# toy-sized source tarball for recipe testing (incl. RKB; L2 tests halting)
+# toy-sized source tarball for recipe testing (L2 tests halting)
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.14.1-2-2-3-2_0.tgz" %}
-{% set sha256_toy = "61672518cdd6baf46c5fe2f4477aeb7a89a7c089f207f4226aca2585eba470e0" %}
+{% set sha256_toy = "67bca412250f25470307e2f7bf7500053d2832700acd7a6e7860948b1894370a" %}
 
 # production source tarball: L/M build w/i 3h but W hangs
 {% set url_bells = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.13.1-7-6-4-7-7-6_mm10f12ob2_0.tgz" %}
@@ -90,7 +90,9 @@ outputs:
       - lib/libint2{{ SHLIB_EXT }}*       # [linux]
       - lib/libint2{{ SHLIB_EXT }}        # [osx]
       - lib/libint2.3{{ SHLIB_EXT }}      # [osx]
-      - lib/cmake/libint2                 # [unix]
+      - lib/cmake/libint2/Find*           # [unix]
+      - lib/cmake/libint2/libint2-config*     # [unix]
+      - lib/cmake/libint2/libint2-targets-C*  # [unix]
       - share/libint                      # [unix]
       - Library/include/libint2.h*        # [win]
       - Library/include/libint2           # [win]
@@ -170,6 +172,7 @@ outputs:
       - include/libint2/fortran/*                                            # [unix]
       - lib/libint2_f{{ SHLIB_EXT }}*                                        # [linux]
       - lib/libint2_f*{{ SHLIB_EXT }}                                        # [osx]
+      - lib/cmake/libint2/libint2-targets-Fortran*                           # [unix]
     test:
       commands:
         - test -f $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
