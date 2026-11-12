@@ -91,7 +91,7 @@ outputs:
       - lib/libint2{{ SHLIB_EXT }}        # [osx]
       - lib/libint2.3{{ SHLIB_EXT }}      # [osx]
       - lib/cmake/libint2/Find*           # [unix]
-      - lib/cmake/libint2/libint2-config* # [unix]
+      - lib/cmake/libint2/libint2-config*  # [unix]
       - lib/cmake/libint2/libint2-targets-C*  # [unix]
       - share/libint                      # [unix]
       - Library/include/libint2.h*        # [win]
