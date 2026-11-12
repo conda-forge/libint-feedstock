@@ -1,5 +1,7 @@
 DOCKER_PLATFORM:
 - linux/amd64
+am_type:
+- lite
 c_compiler:
 - gcc
 c_compiler_version:
