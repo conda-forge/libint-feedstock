@@ -84,9 +84,12 @@ outputs:
         - llvm-openmp                     # [unix]
     files:
       - include/libint2.h*                # [unix]
-      - include/libint2                   # [unix]
+      - include/libint2/*.h*              # [unix]
+      - include/libint2/util/*.h*         # [unix]
+      - include/libint2/lcao/*.h*         # [unix]
       - lib/libint2{{ SHLIB_EXT }}*       # [linux]
-      - lib/libint2.*dylib                # [osx]
+      - lib/libint2{{ SHLIB_EXT }}        # [osx]
+      - lib/libint2.3{{ SHLIB_EXT }}      # [osx]
       - lib/cmake/libint2                 # [unix]
       - share/libint                      # [unix]
       - Library/include/libint2.h*        # [win]
@@ -118,6 +121,7 @@ outputs:
         # Verify library
         - test -f $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
         - test ! -f $PREFIX/lib/libint2.a                                    # [unix]
+        - test ! -f $PREFIX/lib/libint2_f$SHLIB_EXT                          # [unix]
         - if not exist %PREFIX%\\Library\\lib\\int2.lib exit 1               # [win]
         - if exist %PREFIX%\\Library\\bin\\int2.dll exit 1                   # [win]
         # Verify accessories
@@ -145,12 +149,11 @@ outputs:
         - ./build/hf++ h2o_rotated.xyz | python hartree-fock++-validate.py ../../features  # [unix]
         - build\\hf++.exe h2o_rotated.xyz | python hartree-fock++-validate.py ..\\..\\features  # [win]
 
-  - name: libint-fortran-devel
+  - name: libint-fortran
     build:
       skip: true                          # [win]
       run_exports:
-          # runtime needs libint, not libint-fortran-devel, but I think this is how to get *exact* libint
-        - {{ pin_subpackage('libint-fortran-devel', max_pin='x') }}
+        - {{ pin_subpackage('libint-fortran', max_pin='x') }}
     requirements:
       build:
         - {{ stdlib("c") }}
@@ -164,18 +167,19 @@ outputs:
         - {{ pin_subpackage('libint', exact=True) }}
     files:
       - include/*.mod                                                        # [unix]
-      - Library/include/*mod                                                 # [win]
+      - include/libint2/fortran/*                                            # [unix]
+      - lib/libint2_f{{ SHLIB_EXT }}*                                        # [linux]
+      - lib/libint2_f*{{ SHLIB_EXT }}                                        # [osx]
     test:
       commands:
-        # Verify library (no F library but check C)
         - test -f $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
-        - if not exist %PREFIX%\\Library\\lib\\int2.lib exit 1               # [win]
+        - test -f $PREFIX/lib/libint2_f$SHLIB_EXT                            # [unix]
         # Verify accessories
         - test -e $PREFIX/include/libint_f.mod                               # [unix]
         - test -f $PREFIX/include/libint2.h                                  # [unix]
-        - if not exist %PREFIX%\\Library\\include\\libint_f.mod exit 1       # [win]
-        - if not exist %PREFIX%\\Library\\include\\libint2.h exit 1          # [win]
-        # Inspect linkage (no F library)
+        # Inspect linkage
+        - ldd -v $PREFIX/lib/libint2_f$SHLIB_EXT                             # [linux and build_platform == target_platform]
+        - otool -L $PREFIX/lib/libint2_f$SHLIB_EXT                           # [osx]
 
 about:
   home: https://github.com/evaleev/libint
