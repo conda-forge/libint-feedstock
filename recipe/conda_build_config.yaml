@@ -2,6 +2,6 @@ c_compiler:                # [win]
   - clang-cl               # [win]
 cxx_compiler:              # [win]
   - clang-cl               # [win]
-am_type:                   # [linux and x86_64]
-  - full                   # [linux and x86_64]
+am_type:
+  - full
   - lite                   # [linux and x86_64]
