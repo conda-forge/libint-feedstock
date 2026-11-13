@@ -226,6 +226,7 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('libint-fortran', exact=True) }}
+        - {{ pin_subpackage('libint-devel', exact=True) }}
     files:
       - include/*.mod                                                        # [unix]
       - include/libint2/fortran/*                                            # [unix]
