@@ -2,7 +2,6 @@
 {% set version = "2.14.1" %}
 {% set version_src = "2.14.1" %}
 {% set build = 0 %}
-{% set am_type = am_type or "full" %}
 
 # toy-sized source tarball for recipe testing (L2 tests halting)
 {% set url_toy = "https://github.com/loriab/libint/releases/download/v0.1/libint-2.14.1-2-2-3-2_0.tgz" %}
@@ -54,6 +53,8 @@ source:
 {% set build = build + 100 %}
 {% endif %}
 build:
+  force_use_keys:
+    - am_type
   number: {{ build }}
   script_env:
     - ENABLE_FORTRAN=ON                   # [unix]
