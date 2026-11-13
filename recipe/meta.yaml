@@ -195,8 +195,6 @@ outputs:
     build:
       skip: true                          # [win]
       string: {{ am_type }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
-      run_exports:
-        - {{ pin_subpackage('libint-fortran', max_pin='x') }}
     requirements:
       build:
         - {{ stdlib("c") }}
@@ -209,21 +207,34 @@ outputs:
       run:
         - {{ pin_subpackage('libint', exact=True) }}
     files:
-      - include/*.mod                                                        # [unix]
-      - include/libint2/fortran/*                                            # [unix]
       - lib/libint2_f{{ SHLIB_EXT }}*                                        # [linux]
       - lib/libint2_f*{{ SHLIB_EXT }}                                        # [osx]
-      - lib/cmake/libint2/libint2-targets-Fortran*                           # [unix]
     test:
       commands:
         - test -f $PREFIX/lib/libint2$SHLIB_EXT                              # [unix]
         - test -f $PREFIX/lib/libint2_f$SHLIB_EXT                            # [unix]
-        # Verify accessories
-        - test -e $PREFIX/include/libint_f.mod                               # [unix]
-        - test -f $PREFIX/include/libint2.h                                  # [unix]
         # Inspect linkage
         - ldd -v $PREFIX/lib/libint2_f$SHLIB_EXT                             # [linux and build_platform == target_platform]
         - otool -L $PREFIX/lib/libint2_f$SHLIB_EXT                           # [osx]
+
+  - name: libint-fortran-devel
+    build:
+      skip: true                          # [win]
+      string: {{ am_type }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+      run_exports:
+        - {{ pin_subpackage('libint-fortran', max_pin='x') }}
+    requirements:
+      run:
+        - {{ pin_subpackage('libint-fortran', exact=True) }}
+    files:
+      - include/*.mod                                                        # [unix]
+      - include/libint2/fortran/*                                            # [unix]
+      - lib/cmake/libint2/libint2-targets-Fortran*                           # [unix]
+    test:
+      commands:
+        # Verify accessories
+        - test -e $PREFIX/include/libint_f.mod                               # [unix]
+        - test -f $PREFIX/include/libint2.h                                  # [unix]
 
 about:
   home: https://github.com/evaleev/libint
