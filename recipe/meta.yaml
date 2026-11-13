@@ -78,7 +78,7 @@ requirements:
 outputs:
   - name: libint
     build:
-      string: {{ am_type }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+      string: {{ am_type }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
       run_exports:
         - {{ pin_subpackage('libint', max_pin='x') }}
     requirements:
@@ -166,7 +166,7 @@ outputs:
   - name: libint-fortran
     build:
       skip: true                          # [win]
-      string: {{ am_type }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+      string: {{ am_type }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
       run_exports:
         - {{ pin_subpackage('libint-fortran', max_pin='x') }}
     requirements:
