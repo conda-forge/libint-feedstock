@@ -26,6 +26,7 @@ diff -Naur src/configuration.cc.cmake.in src/configuration.cc.cmake.in_bigam > 0
     --disable-1body-property-derivs \
     --with-multipole-max-order=2
 #   uploaded  4 Feb 2026 as libint-2.13.1-2-2-3-2_0.tgz (at tag v2.13.1)
+#   uploaded 11 Nov 2026 as libint-2.14.1-2-2-3-2_0.tgz (at tag v2.14.1)
 cmake -S. -Bbuild \
     -G Ninja \
     -D LIBINT2_MAX_AM="3;2" \
@@ -65,6 +66,8 @@ cmake -S. -Bbuild \
     --with-max-am=6,6
 #   uploaded  4 Feb 2026 as libint-2.13.1-7-6-7-7_mm10f12ob2_0.tgz (at v2.13.1 tag; 16252 gen/*cc files)
 #       above used bump in 4c energy ints to AM=7 (ERI & ONEBODY) analogous with bells, W builds in 4.5h
+#       above used    -D LIBINT2_MAX_AM="6;6;3"
+#   uploaded 12 Nov 2026 as libint-2.14.1-7-6-7-7_mm10f12ob2_0.tgz (at v2.14.1 tag; ????? gen/*cc files)
 cmake -S. -Bbuild \
     -G Ninja \
     -D LIBINT2_ENABLE_ERI=1 \
@@ -79,7 +82,7 @@ cmake -S. -Bbuild \
     -D LIBINT2_ERI_MAX_AM="7;6" \
     -D LIBINT2_ERI3_MAX_AM="7;7" \
     -D LIBINT2_ERI2_MAX_AM="7;7" \
-    -D LIBINT2_MAX_AM="6;6;3"
+    -D LIBINT2_MAX_AM="7;6;3"
 
 # c-f bells
 #   uploaded as libint-2.8.0-dev1-5-4-3-6-5-4_mm4f12ob2_0.tgz
@@ -126,13 +129,15 @@ cmake -S. -Bbuild \
     -D LIBINT2_MAX_AM="6;6;3"
 #   uploaded  8 Oct 2026 as libint-2.13.1-7-6-4-7-7-6_mm10f12ob2_0.tgz (at v2.13.1 tag; 24906 gen/*cc files)
 #       above sometimes labeled hessbells. bumps hessian ints 4c to AM=4 (ERI & ONEBODY) and 3c to AM=6. L/M build under 2.5h
+#       above used (poss. incor.) -D LIBINT2_MAX_AM="7;6;3"
+#   uploaded 11 Nov 2026 as libint-2.14.1-7-6-4-7-7-6_mm10f12ob2_0.tgz (at v2.14.1 tag; ????? gen/*cc files)
 cmake -S. -Bbuild \
     -G Ninja \
     -D LIBINT2_ONEBODY_MAX_AM="7;6;4" \
     -D LIBINT2_ERI_MAX_AM="7;6;4" \
     -D LIBINT2_ERI3_MAX_AM="7;7;6" \
     -D LIBINT2_ERI2_MAX_AM="7;7;6" \
-    -D LIBINT2_MAX_AM="7;6;3"
+    -D LIBINT2_MAX_AM="7;6;4"
 
 
 # c-f little bells (for aarch64)

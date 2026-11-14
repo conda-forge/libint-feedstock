@@ -65,6 +65,9 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libint-green.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint.svg)](https://anaconda.org/conda-forge/libint) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libint--cxx--devel-green.svg)](https://anaconda.org/conda-forge/libint-cxx-devel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint-cxx-devel.svg)](https://anaconda.org/conda-forge/libint-cxx-devel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint-cxx-devel.svg)](https://anaconda.org/conda-forge/libint-cxx-devel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint-cxx-devel.svg)](https://anaconda.org/conda-forge/libint-cxx-devel) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libint--devel-green.svg)](https://anaconda.org/conda-forge/libint-devel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint-devel.svg)](https://anaconda.org/conda-forge/libint-devel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint-devel.svg)](https://anaconda.org/conda-forge/libint-devel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint-devel.svg)](https://anaconda.org/conda-forge/libint-devel) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libint--fortran-green.svg)](https://anaconda.org/conda-forge/libint-fortran) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint-fortran.svg)](https://anaconda.org/conda-forge/libint-fortran) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint-fortran.svg)](https://anaconda.org/conda-forge/libint-fortran) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint-fortran.svg)](https://anaconda.org/conda-forge/libint-fortran) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libint--fortran--devel-green.svg)](https://anaconda.org/conda-forge/libint-fortran-devel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libint-fortran-devel.svg)](https://anaconda.org/conda-forge/libint-fortran-devel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libint-fortran-devel.svg)](https://anaconda.org/conda-forge/libint-fortran-devel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libint-fortran-devel.svg)](https://anaconda.org/conda-forge/libint-fortran-devel) |
 
 Installing libint
@@ -84,7 +87,7 @@ How to use
 <summary>With conda</summary>
 
 ```
-conda install libint libint-fortran-devel
+conda install libint libint-cxx-devel libint-devel libint-fortran libint-fortran-devel
 ```
 
 </details>
@@ -93,7 +96,7 @@ conda install libint libint-fortran-devel
 <summary>With mamba</summary>
 
 ```
-mamba install libint libint-fortran-devel
+mamba install libint libint-cxx-devel libint-devel libint-fortran libint-fortran-devel
 ```
 
 </details>
@@ -103,9 +106,9 @@ mamba install libint libint-fortran-devel
 
 ```
 # for adding to your local project
-pixi add libint libint-fortran-devel
+pixi add libint libint-cxx-devel libint-devel libint-fortran libint-fortran-devel
 # for installing globally
-pixi global install libint libint-fortran-devel
+pixi global install libint libint-cxx-devel libint-devel libint-fortran libint-fortran-devel
 ```
 
 </details>

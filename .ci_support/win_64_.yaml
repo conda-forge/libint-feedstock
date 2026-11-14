@@ -1,3 +1,5 @@
+am_type:
+- full
 c_compiler:
 - clang-cl
 c_stdlib:

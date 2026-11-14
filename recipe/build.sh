@@ -2,10 +2,16 @@
 
 set -x
 echo ${PREFIX}
+
+CUBBS=4
 if [[ "${target_platform}" == linux-* ]]; then
   # the L build hung once at [2105/2333]. not verified, but throttling Ninja here to avert out-of-memory problems.
   # export CMAKE_BUILD_PARALLEL_LEVEL=2
   :
+fi
+if [[ "$target_platform" == "linux-ppc64le" ]]; then
+  :
+  CUBBS=6
 fi
 if [[ "${target_platform}" == "osx-arm64" ]]; then
   :
@@ -18,7 +24,7 @@ cmake ${CMAKE_ARGS} \
   -D CMAKE_INSTALL_PREFIX=${PREFIX} \
   -D CMAKE_BUILD_TYPE:STRING=Release \
   -D CMAKE_VERBOSE_MAKEFILE=OFF \
-  -D CMAKE_UNITY_BUILD_BATCH_SIZE=4 \
+  -D CMAKE_UNITY_BUILD_BATCH_SIZE=$CUBBS \
   -D CMAKE_CXX_COMPILER=${CXX} \
   -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fopenmp" \
   -D CMAKE_INSTALL_LIBDIR=lib \
