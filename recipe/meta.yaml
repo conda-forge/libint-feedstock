@@ -35,14 +35,14 @@ package:
 #   take <30m and all recipe tests will still pass. This is highly recommended for sanity.
 
 source:
-  url: {{ url_toy }}
-  #url: {{ url_bells }}        # [(am_type == "full") and unix and not ppc64le]
-  #url: {{ url_basic }}        # [(am_type == "full") and (win or ppc64le)]
-  #url: {{ url_lite }}         # [am_type == "lite"]
-  sha256: {{ sha256_toy }}
-  #sha256: {{ sha256_bells }}  # [(am_type == "full") and unix and not ppc64le]
-  #sha256: {{ sha256_basic }}  # [(am_type == "full") and (win or ppc64le)]
-  #sha256: {{ sha256_lite }}   # [am_type == "lite"]
+  # url: {{ url_toy }}
+  url: {{ url_bells }}        # [(am_type == "full") and unix and not ppc64le]
+  url: {{ url_basic }}        # [(am_type == "full") and (win or ppc64le)]
+  url: {{ url_lite }}         # [am_type == "lite"]
+  # sha256: {{ sha256_toy }}
+  sha256: {{ sha256_bells }}  # [(am_type == "full") and unix and not ppc64le]
+  sha256: {{ sha256_basic }}  # [(am_type == "full") and (win or ppc64le)]
+  sha256: {{ sha256_lite }}   # [am_type == "lite"]
   # note: source/url above is a tarball of generated library source code.
   # * the upstream generator project is: https://github.com/evaleev/libint
   # * tarballs aren't upstream release artifacts but have been generated with
